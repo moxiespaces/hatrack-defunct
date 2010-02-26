@@ -50,4 +50,26 @@ class HatsController < ApplicationController
     end
   end
 
+  def update_green_hat
+    hat_data =  params[:id].split('_')
+    id = hat_data.last
+    field = hat_data[1]
+
+    sprint = Sprint.find(params[:sprint_id])
+
+    black_hat = sprint.black_hats.find(id)
+    unless black_hat.green_hat
+      black_hat.green_hat = GreenHat.new()
+    end
+
+    black_hat.green_hat[field] = params[:value]
+
+    if sprint.save
+      render :status => 200, :text => params[:value]
+    else
+      render :status => 400, :text => 'Error updating hat'
+    end
+
+  end
+
 end

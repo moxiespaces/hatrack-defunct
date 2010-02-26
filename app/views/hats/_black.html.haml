@@ -1,0 +1,12 @@
+%li.hat_item
+  .actions
+    %a
+      %img{'src' => '/images/bullet_go.png'}
+    %a
+      %img{'src' => '/images/delete.png'}
+
+  .hat.e.black{:id=>"black_#{hat.id}"}= hat.text
+  .green_hat
+    %div{:id=>"green_text_#{hat.id}"}= hat.green_hat.try(:text) || "Add a green hat"
+    %div{:id=>"green_owner_#{hat.id}"}= hat.green_hat.try(:owner) || "Add a green hat owner"
+

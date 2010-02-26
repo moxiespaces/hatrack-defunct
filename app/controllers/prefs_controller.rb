@@ -2,14 +2,11 @@ class PrefsController < ApplicationController
 
 
   def index
-    @sprints = Sprint.all
-    if @sprints.blank?
-      sprint = Sprint.new(:name => 'Current Sprint')
-      sprint.save!
-      @sprints = [sprint]
+    @prefs = Pref.first
+    if @prefs.blank?
+      @prefs = Pref.new(:name => 'Current Sprint')
+      @prefs.save!
     end
-
-    @current_sprint = @sprints.first
   end
 
 end

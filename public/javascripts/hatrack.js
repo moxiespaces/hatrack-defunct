@@ -14,6 +14,9 @@ var Hatrack = {
         type: 'textarea',submit: 'Save',cancel: 'Cancel', onblur: 'ignore' });
     }
 
+    $('.green_hat div').editable('/hats/update_green_hat?sprint_id=' + Hatrack.sprint_id, {
+        type: 'textarea',submit: 'Save',cancel: 'Cancel', onblur: 'ignore' });
+
     $('.fontSize').bind('click', Hatrack.fontSize);
 
     if (Hatrack.font_size) {

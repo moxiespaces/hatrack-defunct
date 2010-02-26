@@ -74,56 +74,55 @@ body {
   list-style: none; }
 
 /* line 74, ../../../app/stylesheets/hatrack.sass */
-.hat {
-  border-bottom: 1px #000 solid;
-  padding: 5px;
-  font-size: 1em;
-  margin: 0; }
-
-/* line 81, ../../../app/stylesheets/hatrack.sass */
-.hat textarea {
-  width: 98%;
-  min-height: 60px;
-  font-size: 1em; }
-
-/* line 87, ../../../app/stylesheets/hatrack.sass */
 .hat_item {
   clear: both; }
-  /* line 90, ../../../app/stylesheets/hatrack.sass */
+  /* line 77, ../../../app/stylesheets/hatrack.sass */
   .hat_item .actions {
     float: right;
     height: 20px;
     padding: 3px 3px 0; }
-    /* line 95, ../../../app/stylesheets/hatrack.sass */
+    /* line 82, ../../../app/stylesheets/hatrack.sass */
     .hat_item .actions img {
       height: 16px;
       width: 16px;
       padding: 0 5px;
       margin: 0; }
+  /* line 88, ../../../app/stylesheets/hatrack.sass */
+  .hat_item .hat {
+    border-bottom: 1px #000 solid;
+    padding: 5px;
+    font-size: 1em;
+    margin: 0; }
+  /* line 95, ../../../app/stylesheets/hatrack.sass */
+  .hat_item textarea {
+    width: 98%;
+    min-height: 60px;
+    font-size: 1em; }
 
-/* line 101, ../../../app/stylesheets/hatrack.sass */
+/* line 102, ../../../app/stylesheets/hatrack.sass */
 #yellow {
   background-color: :#ffffcc; }
 
-/* line 105, ../../../app/stylesheets/hatrack.sass */
+/* line 106, ../../../app/stylesheets/hatrack.sass */
 #yellow .hat {
   background-color: #ffff00; }
 
-/* line 109, ../../../app/stylesheets/hatrack.sass */
+/* line 110, ../../../app/stylesheets/hatrack.sass */
 #black {
   background-color: #cccccc; }
 
-/* line 113, ../../../app/stylesheets/hatrack.sass */
+/* line 114, ../../../app/stylesheets/hatrack.sass */
 #black .hat {
   border-bottom: 0px;
   background-color: #000000;
   color: #ffffff;
-  -moz-border-radius-bottomleft: 10px;
-  -webkit-border-bottom-left-radius: 10px; }
+  -moz-border-radius-bottomleft: 7px;
+  -webkit-border-bottom-left-radius: 7px; }
 
-/* line 121, ../../../app/stylesheets/hatrack.sass */
-#black .green {
-  border-bottom: 1px #000 solid;
+/* line 122, ../../../app/stylesheets/hatrack.sass */
+.green_hat {
   background-color: #006600;
   color: #ffffff;
-  margin: 0 0 0 20px; }
+  margin: 0 0 0 20px;
+  padding: 5px;
+  font-size: 1em; }
