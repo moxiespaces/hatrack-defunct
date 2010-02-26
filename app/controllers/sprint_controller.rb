@@ -6,7 +6,8 @@ class SprintController < ApplicationController
   def index
     @sprints = current_user.sprints.all
     if @sprints.blank?
-      sprint = current_user.sprints << Sprint.new(:name => 'Current Sprint')
+      sprint = Sprint.new(:name => 'Current Sprint')
+      current_user.sprints << Sprint.new(:name => 'Current Sprint')
       @sprints = [sprint]
     end
 
@@ -25,12 +26,11 @@ class SprintController < ApplicationController
   
 
   def new
-    @sprint = current_user.sprints << Sprint.new
+    @sprint = Sprint.new
+    current_user.sprints << Sprint.new
     redirect_to(:action => :index)
   end
 
   def update
-    
   end
-
 end
