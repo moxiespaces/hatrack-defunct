@@ -12,12 +12,8 @@ Rails::Initializer.run do |config|
   config.gem "jammit"
   #config.gem "mongo_ext"
   config.gem "mongo_mapper"
-<<<<<<< HEAD
-  #config.gem "liquid"
-=======
   config.gem 'warden'
   config.gem 'devise'
->>>>>>> c0bab086faad2c0bf8444dfb5db66c72f17333bf
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
