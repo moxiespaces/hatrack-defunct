@@ -5,6 +5,7 @@ javascript_compressor: closure
 javascripts:
   common:
     - public/javascripts/jquery.js
+    - public/javascripts/jquery-ui.min.js
     - public/javascripts/jquery.jeditable.js
     - public/javascripts/hatrack.js
 stylesheets:
@@ -12,4 +13,5 @@ stylesheets:
     - public/stylesheets/compiled/screen.css
     - public/stylesheets/compiled/print.css
   common:
+    - public/stylesheets/jquery-ui.css
     - public/stylesheets/compiled/hatrack.css

@@ -1,0 +1,47 @@
+#hatrack
+  #header
+    #font_controls
+      %a.fontSize.down -A
+      %a.fontSize.reset A
+      %a.fontSize.up A+
+
+    #controls
+      %a.toggle.yellow Yellow
+      %a.toggle.black black
+      %a{:href => "/sprint/new"} New Sprint
+
+    #sprints
+      - @sprints.each do |sprint|
+        %a{:href => "/sprint/show/#{sprint.id}"}= "#{sprint.name} (#{sprint.try(:start_date)} - #{sprint.try(:end_date) || 'Current'})" 
+
+    %form#current_sprint
+      %input#sprint_name{:value => @current_sprint.name}
+      %input#sprint_start_date.date_input{:value => @current_sprint.start_date}
+      %input#sprint_end_date.date_input{:value => @current_sprint.end_date} 
+
+       
+
+  %table#racks
+    %tr
+      %td#yellow.rack{:style => "width:50%;"}
+        .column_header
+          %a.add_hat.yellow
+            %img{:src =>"/images/add.png"}
+        %ul.list
+          - @current_sprint.yellow_hats.each do |hat|
+            = render :partial => '/hats/yellow', :locals => {:hat => hat}
+
+      %td#black.rack{:style => "width:50%;"}
+        .column_header
+          %a.add_hat.black
+            %img{:src =>"/images/add.png"}
+
+        %ul.list
+          - @current_sprint.black_hats.each do |hat|
+            = render :partial => '/hats/black', :locals => {:hat => hat} 
+        
+
+
+
+
+

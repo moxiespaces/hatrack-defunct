@@ -2,9 +2,9 @@ class SprintController < ApplicationController
   layout 'hatrack'
 
   def index
-    @sprints = Sprint.all
+    @sprints = Sprint.all(:order => 'start_date')
     if @sprints.blank?
-      sprint = Sprint.new(:name => 'Current Sprint')
+      sprint = Sprint.new(:name => 'New Sprint',:start_date => Date.today)
       sprint.save!
       @sprints = [sprint]
     end
@@ -13,8 +13,9 @@ class SprintController < ApplicationController
   end
 
   def show
-    @sprints = Sprint.find(:all, :order => 'created_at desc')
+    @sprints = Sprint.all(:order => 'start_date')
     @current_sprint = Sprint.find(params[:id])
+    render :template => '/sprint/index'
   end
 
   def set_font_size
@@ -24,7 +25,8 @@ class SprintController < ApplicationController
   
 
   def new
-    @sprint = Sprint.create
+    #Sprint.sort(:end_date)
+    @sprint = Sprint.create(:name => 'New Sprint',:start_date => Date.today)
     redirect_to(:action => :index)
   end
 

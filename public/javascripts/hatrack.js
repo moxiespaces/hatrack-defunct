@@ -19,6 +19,8 @@ var Hatrack = {
 
     $('.fontSize').bind('click', Hatrack.fontSize);
 
+    $('.date_input').datepicker();
+
     if (Hatrack.font_size) {
       $('#hatrack').css('font-size', Hatrack.font_size);
     }

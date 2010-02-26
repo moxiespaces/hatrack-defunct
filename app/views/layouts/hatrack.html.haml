@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+%html
+  %head
+    %title Agile Hat Rack
+    = include_stylesheets :blueprint, :common, :media => 'all'
+
+  %body
+
+  = yield
+
+
+  = include_javascripts :common
+
+  - if session[:font_size]
+    :javascript
+      Hatrack.font_size = #{session[:font_size]};
+
+  :javascript
+
+    Hatrack.sprint_id = '#{@current_sprint.id}';
+    Hatrack.setup();
+
