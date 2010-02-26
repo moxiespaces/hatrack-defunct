@@ -12,13 +12,13 @@
 
     #sprints
       - @sprints.each do |sprint|
-        %a{:href => "/sprint/show/#{sprint.id}"}= "#{sprint.name} (#{sprint.try(:start_date)} - #{sprint.try(:end_date) || 'Current'})" 
+        %a{:href => "/sprint/show/#{sprint.id}"}= "#{sprint.name} (#{sprint.print_start_date } - #{sprint.print_start_date })" 
 
-    %form#current_sprint
-      %input#sprint_name{:value => @current_sprint.name}
-      %input#sprint_start_date.date_input{:value => @current_sprint.start_date}
-      %input#sprint_end_date.date_input{:value => @current_sprint.end_date} 
-
+    %form#current_sprint{:action => "/sprint/update/#{@current_sprint.id}"}
+      %input#sprint_name{:name => "sprint[name]", :value => @current_sprint.name}
+      %input#sprint_start_date.date_input{:name => "sprint[start_date]", :value => @current_sprint.start_date.strftime("%m/%d/%Y")}
+      %input#sprint_end_date.date_input{:name => "sprint[end_date]", :value => @current_sprint.end_date.strftime("%m/%d/%Y")}
+      %input{:type => 'submit'}
        
 
   %table#racks

@@ -14,7 +14,7 @@ class SprintController < ApplicationController
 
   def show
     @sprints = Sprint.all(:order => 'start_date')
-    @current_sprint = Sprint.find(params[:id])
+    @current_sprint = @current_sprint || Sprint.find(params[:id])
     render :template => '/sprint/index'
   end
 
@@ -31,7 +31,12 @@ class SprintController < ApplicationController
   end
 
   def update
-    
+    sprint = Sprint.find(params[:id])
+    sprint.name = params[:sprint][:name]
+    sprint.start_date = Date.parse(params[:sprint][:start_date])
+    sprint.end_date = Date.parse(params[:sprint][:end_date])
+    sprint.save
+    redirect_to(:action => :show, :id => params[:id])
   end
 
 end
