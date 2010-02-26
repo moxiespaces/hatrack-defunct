@@ -11,6 +11,8 @@ staging:
     port: 27017
     database: hatrack-staging
 production:
-    host: genesis.mongohq.com
-    port: 27021
-    database: hatrack-production
+    host: swan.mongohq.com
+    port: 27019
+    database: hats
+    username: theath
+    password: omgmongo
