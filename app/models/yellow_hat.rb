@@ -1,7 +1,2 @@
 class YellowHat < Hat
-
-  
 end
-
-
-

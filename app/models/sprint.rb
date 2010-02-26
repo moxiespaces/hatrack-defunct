@@ -8,6 +8,7 @@ class Sprint
 
   many :yellow_hats
   many :black_hats
+<<<<<<< HEAD
 
   def print_start_date
     start_date.strftime("%m/%d")
@@ -18,4 +19,8 @@ class Sprint
   end
 end
 
+=======
+>>>>>>> c0bab086faad2c0bf8444dfb5db66c72f17333bf
 
+  belongs_to :user
+end

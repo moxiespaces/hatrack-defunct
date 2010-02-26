@@ -1,7 +1,8 @@
 class HatsController < ApplicationController
+  before_filter :authenticate_user!
 
   def create
-    sprint = Sprint.find(params[:sprint_id])
+    sprint = current_user.sprints.find(params[:sprint_id])
 
     lo = {:text => params[:value]}
     
@@ -26,7 +27,7 @@ class HatsController < ApplicationController
   def update
     id = params[:id].split('_').last
 
-    sprint = Sprint.find(params[:sprint_id])
+    sprint = current_user.sprints.find(params[:sprint_id])
 
     hat = case params[:type]
       when 'yellow'
