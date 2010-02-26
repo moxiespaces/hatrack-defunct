@@ -1,0 +1,16 @@
+development:
+    host: localhost
+    port: 27017
+    database: hatrack-development
+test:
+    host: localhost
+    port: 27017
+    database: hatrack-test
+staging:
+    host: localhost
+    port: 27017
+    database: hatrack-staging
+production:
+    host: localhost
+    port: 27017
+    database: hatrack-production

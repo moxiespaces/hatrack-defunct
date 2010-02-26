@@ -1,0 +1,4 @@
+class GreenHat < Hat
+
+
+end

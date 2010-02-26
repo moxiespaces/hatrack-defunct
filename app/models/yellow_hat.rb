@@ -1,0 +1,7 @@
+class YellowHat < Hat
+
+  
+end
+
+
+

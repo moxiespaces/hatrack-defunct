@@ -1,0 +1,8 @@
+<li class="hat_item">
+  <div class="actions">
+    <a><img src="/images/bullet_go.png"></a>
+    <a><img src="/images/delete.png"></a>
+  </div>
+  <div class="hat e black" id="black_<%= hat.id %>"><%= hat.text %></div>
+  <div class="hat e green" id="green_<%= hat.id %>"><%= hat.green_hat.try(:text) || "Add a green hat" %></div>
+</li>
