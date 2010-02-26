@@ -6,6 +6,6 @@ class Sprint
 
   many :yellow_hats
   many :black_hats
+
+  belongs_to :user
 end
-
-

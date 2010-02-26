@@ -2,3 +2,5 @@ compass -v '0.8.17'
 haml -v '2.2.16'
 jammit
 mongo_mapper
+warden -v 0.9.4
+devise -v 1.0.1

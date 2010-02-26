@@ -1,11 +1,12 @@
 class SprintController < ApplicationController
+  before_filter :authenticate_user!
+
   layout 'hatrack'
 
   def index
-    @sprints = Sprint.all
+    @sprints = current_user.sprints.all
     if @sprints.blank?
-      sprint = Sprint.new(:name => 'Current Sprint')
-      sprint.save!
+      sprint = current_user.sprints << Sprint.new(:name => 'Current Sprint')
       @sprints = [sprint]
     end
 
@@ -13,18 +14,18 @@ class SprintController < ApplicationController
   end
 
   def show
-    @sprints = Sprint.find(:all, :order => 'created_at desc')
-    @current_sprint = Sprint.find(params[:id])
+    @sprints = current_user.sprints.all(:order => 'created_at desc')
+    @current_sprint = current_user.sprints.find(params[:id])
   end
 
   def set_font_size
     session[:font_size] = params[:size]
-    render :template => false,:layout => false
+    render :template => false, :layout => false
   end
   
 
   def new
-    @sprint = Sprint.create
+    @sprint = current_user.sprints << Sprint.new
     redirect_to(:action => :index)
   end
 
