@@ -5,3 +5,4 @@ mongo_mapper
 mongo_ext
 warden -v 0.9.4
 devise -v 1.0.1
+formtastic
