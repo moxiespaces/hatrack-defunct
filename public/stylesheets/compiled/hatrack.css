@@ -126,3 +126,11 @@ body {
   margin: 0 0 0 20px;
   padding: 5px;
   font-size: 1em; }
+
+/* line 131, ../../../app/stylesheets/hatrack.sass */
+#current_sprint .formtastic {
+  display: none; }
+
+/* line 135, ../../../app/stylesheets/hatrack.sass */
+#current_sprint.edit .formtastic {
+  display: block; }

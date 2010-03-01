@@ -19,7 +19,9 @@ var Hatrack = {
 
     $('.fontSize').bind('click', Hatrack.fontSize);
 
-    $('.date_input').datepicker();
+    $('.date_input').datepicker({dateFormat: 'yy-mm-dd'});
+
+    $('#edit_sprint').bind('click', Hatrack.edit_sprint);
 
     if (Hatrack.font_size) {
       $('#hatrack').css('font-size', Hatrack.font_size);
@@ -84,7 +86,11 @@ var Hatrack = {
         $('#hatrack').css('font-size', parseInt($('#hatrack').css('font-size')) - 1);
         break;
     }
-    $.post('/sprint/set_font_size', {size:parseInt($('#hatrack').css('font-size')) });
+    $.post('/sprints/set_font_size', {size:parseInt($('#hatrack').css('font-size')) });
+  },
+
+  edit_sprint: function(event){
+    $(event.target).parent('#current_sprint').addClass('edit');
   }
 }
 

@@ -14,4 +14,6 @@ stylesheets:
     - public/stylesheets/compiled/print.css
   common:
     - public/stylesheets/jquery-ui.css
+    - public/stylesheets/formtastic.css
+    - public/stylesheets/formtastic_changes.css
     - public/stylesheets/compiled/hatrack.css

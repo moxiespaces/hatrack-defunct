@@ -10,6 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'compass', :version => '>= 0.8.17'
   config.gem 'haml', :version => '>=2.2.16'
   config.gem "jammit"
+  config.gem 'formtastic'
   #config.gem "mongo_ext"
   config.gem "mongo_mapper"
   config.gem 'warden'

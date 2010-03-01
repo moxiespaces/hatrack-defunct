@@ -8,18 +8,25 @@
     #controls
       %a.toggle.yellow Yellow
       %a.toggle.black black
-      %a{:href => "/sprint/new"} New Sprint
+      %a{:href => "/sprints/new"} New Sprint
 
     #sprints
       - @sprints.each do |sprint|
-        %a{:href => "/sprint/show/#{sprint.id}"}= "#{sprint.name} (#{sprint.print_start_date } - #{sprint.print_start_date })" 
+        %a{:href => "/sprints/show/#{sprint.id}"}= "#{sprint.name} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
 
-    %form#current_sprint{:action => "/sprint/update/#{@current_sprint.id}"}
-      %input#sprint_name{:name => "sprint[name]", :value => @current_sprint.name}
-      %input#sprint_start_date.date_input{:name => "sprint[start_date]", :value => @current_sprint.start_date.strftime("%m/%d/%Y")}
-      %input#sprint_end_date.date_input{:name => "sprint[end_date]", :value => @current_sprint.end_date ? @current_sprint.end_date.strftime("%m/%d/%Y") : '' }
-      %input{:type => 'submit'}
-       
+    #current_sprint
+      %span= @current_sprint.name
+      %span= "(#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+      %span#edit_sprint= "edit"
+
+      - semantic_form_for @current_sprint do |form|
+        - form.inputs do
+          = form.input :name
+          = form.input :start_date,:input_html => { :class => 'date_input' }
+          = form.input :end_date,:input_html => { :class => 'date_input' }
+        - form.buttons do
+          = form.commit_button
+        
 
   %table#racks
     %tr
