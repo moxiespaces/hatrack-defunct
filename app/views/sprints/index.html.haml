@@ -5,18 +5,8 @@
       %a.fontSize.reset A
       %a.fontSize.up A+
 
-    #controls
-      %a.toggle.yellow Yellow
-      %a.toggle.black black
-      %a{:href => "/sprints/new"} New Sprint
-
-    #sprints
-      - @sprints.each do |sprint|
-        %a{:href => "/sprints/show/#{sprint.id}"}= "#{sprint.name} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
-
     #current_sprint
-      %span= @current_sprint.name
-      %span= "(#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+      %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
       %span#edit_sprint= "edit"
 
       - semantic_form_for @current_sprint do |form|
@@ -26,7 +16,21 @@
           = form.input :end_date,:input_html => { :class => 'date_input' }
         - form.buttons do
           = form.commit_button
-        
+          %input{:type => 'button', :value => 'Cancel'}
+
+    %ul#sprints
+      - @sprints.each do |sprint|
+        %li
+          %a{:href => "/sprints/show/#{sprint.id}"}= "#{sprint.name} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
+
+    #logo HatRack
+
+
+  #controls
+    %a.toggle.yellow Yellow
+    %a.toggle.black black
+    %a{:href => "/sprints/new"} New Sprint
+
 
   %table#racks
     %tr
@@ -48,7 +52,9 @@
             = render :partial => '/hats/black', :locals => {:hat => hat} 
         
 
-
+  #new_hat
+    %input.yellow{:type => 'button', :value => "Add Yellow Hat"}
+    %input.black{:type => 'button', :value => "Add Black Hat"}
 
 
 

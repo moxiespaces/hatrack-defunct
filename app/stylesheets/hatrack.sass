@@ -18,36 +18,91 @@ body
     :margin 0
     :padding 0
 
-#font_controls
-  :float right
+  #new_hat
+    :position absolute
+    :width 200px
+    :height 30px
+    :left 300px
+    :top 25px
+    :border 2px #000 solid
+    :text-align center
+    :background-color #fff
+    :padding 10px
+    :display none
 
-
-.fontSize
-  :font-weight bold
-  :font-size 20px
-  :color #003366
-  :text-decoration none
-  :padding 0 5px
-
-
-.fontSize.up
-  :font-size 40px
-  :text-decoration none
-
-
-.fontSize.reset
-  :font-size 30px
-  :text-decoration none
-  
-
-
-#sprints
-  :margin 0
-  :padding 0
-
+  #new_hat.enabled
+    :display block
 
 #header
-  :height 10%
+  :height 40px
+  :background-color #3366ff
+  :padding 0 10px 0
+  :position relative
+
+  #current_sprint
+    :position relative
+    :display inline
+    :color #fff
+    :font-weight bold
+    :font-size 14px
+    :padding 10px 10px 0
+    :cursor pointer
+
+
+    .formtastic
+      :display none
+
+  #current_sprint.edit
+    .formtastic
+      :display block
+      :position absolute
+      :width 300px
+      :height 300px
+      :border 2px black solid
+      :left 100px
+      :top 40px
+      :background-color #fff
+      :padding 10px
+
+  #logo
+    :display inline
+    :font-size 18px
+
+  #sprints
+    :position absolute
+    :border 1px black solid
+    :background-color #fff
+    :display none
+    :margin 0
+    :padding 0
+
+  #sprints.enable
+    :display block
+
+
+  #font_controls
+    :float right
+    :margin 0
+    :padding 0
+
+
+    .fontSize
+      :font-weight bold
+      :font-size 15px
+      :color #fff
+      :text-decoration none
+      :padding 0 5px
+
+
+
+    .fontSize.reset
+      :font-size 20px
+      :text-decoration none
+
+    .fontSize.up
+      :font-size 25px
+      :text-decoration none
+
 
 #racks 
   :width 100%
@@ -58,81 +113,74 @@ body
   :height 90%
 
 
-.rack 
-  :background-color #ddd
-  :margin 0 10px
-  :vertical-align top
-  :overflow hidden
+  .rack
+    :background-color #ddd
+    :margin 0 10px
+    :vertical-align top
+    :overflow hidden
 
 
-.list
-  :margin 0
-  :padding 0
-  :list-style none
+  .list
+    :margin 0
+    :padding 0
+    :list-style none
 
 
-.hat_item
-  :clear both
+  .hat_item
+    :clear both
 
-  .actions
-    :float right
-    :height 20px
-    :padding 3px 3px 0
+    .actions
+      :float right
+      :height 20px
+      :padding 3px 3px 0
 
-    img
-      :height 16px
-      :width 16px
-      :padding 0 5px
+      img
+        :height 16px
+        :width 16px
+        :padding 0 5px
+        :margin 0
+
+    .hat
+      :border-bottom 1px #000 solid
+      :padding 5px
+      :font-size 1em
       :margin 0
 
-  .hat
-    :border-bottom 1px #000 solid
+
+    textarea
+      :width 98%
+      :min-height 60px
+      :font-size 1em
+
+
+
+  #yellow
+    :background-color :#ffffcc
+
+
+  #yellow .hat
+    :background-color #ffff00
+
+
+  #black
+    :background-color #cccccc
+
+
+  #black .hat
+    :border-bottom 0px
+    :background-color #000000
+    :color #ffffff
+    :-moz-border-radius-bottomleft 7px
+    :-webkit-border-bottom-left-radius 7px
+
+
+  .green_hat
+    :background-color #006600
+    :color #ffffff
+    :margin 0 0 0 20px
     :padding 5px
     :font-size 1em
-    :margin 0
 
 
-  textarea
-    :width 98%
-    :min-height 60px
-    :font-size 1em
-
-
-
-#yellow
-  :background-color :#ffffcc
-
-
-#yellow .hat 
-  :background-color #ffff00
-
-
-#black 
-  :background-color #cccccc
-
-
-#black .hat 
-  :border-bottom 0px
-  :background-color #000000
-  :color #ffffff
-  :-moz-border-radius-bottomleft 7px
-  :-webkit-border-bottom-left-radius 7px
-
-
-.green_hat 
-  :background-color #006600
-  :color #ffffff
-  :margin 0 0 0 20px
-  :padding 5px
-  :font-size 1em
-
-
-#current_sprint
-  .formtastic
-    :display none
-
-#current_sprint.edit
-  .formtastic
-    :display block
 
 
