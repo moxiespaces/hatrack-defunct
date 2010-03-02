@@ -22,7 +22,6 @@ var Hatrack = {
     }
 
     $('body').keydown(Hatrack.keyWatcher);
-    $('body').bind('click', Hatrack.resetWindows);
     Hatrack.setup();
   },
   setup: function(editable,hat) {
@@ -155,11 +154,13 @@ var Hatrack = {
 
   showSprints:function(event){
     $('#sprints').addClass('enable');
+    $('body').bind('click', Hatrack.resetWindows);
   },
 
   resetWindows:function(event){
     if ( event.target.id != 'current_name' ){
       $('#sprints').removeClass('enable');
+      $('body').unbind('click', Hatrack.resetWindows);
     }
   }
 }

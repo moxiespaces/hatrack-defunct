@@ -4,7 +4,7 @@ class HatsController < ApplicationController
   def create
     sprint = current_user.sprints.find(params[:sprint_id])
 
-    lo = {:text => params[:value]}
+    lo = {:text => params[:value], :created_at => Time.now.utc}
     
     case params[:type]
       when 'yellow'
