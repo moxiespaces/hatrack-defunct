@@ -1,4 +1,10 @@
-html 
+!header_color = #3366ff
+
+=border-radius(!rad)
+  :-moz-border-radius = !rad
+  :-webkit-border-radius = !rad
+
+html
   :height 100%
 
 body 
@@ -30,12 +36,12 @@ body
     :padding 10px
     :display none
 
-  #new_hat.enabled
-    :display block
+  .underline
+    :text-decoration underline
 
 #header
   :height 40px
-  :background-color #3366ff
+  :background-color = !header_color
   :padding 0 10px 0
   :position relative
 
@@ -47,6 +53,7 @@ body
     :font-size 14px
     :padding 10px 10px 0
     :cursor pointer
+    :line-height 30px
 
 
     .formtastic
@@ -67,6 +74,13 @@ body
   #logo
     :display inline
     :font-size 18px
+    :line-height 30px
+
+
+  #new_sprint
+    :font-size 18px
+    :line-height 30px
+
 
   #sprints
     :position absolute
@@ -79,11 +93,53 @@ body
   #sprints.enable
     :display block
 
+  #keyboard_controls
+    :float right
+    :background transparent url(/images/keyboard.png) no-repeat 0 0
+    :margin 12px 20px
+    :height 16px
+    :width 36px 
+    :line-height 30px
+
+    #hints
+      :display none
+
+  #column_controls
+    :background-color #eee
+    :height 40px
+    :float right
+    :margin 0 30px
+    :padding 0
+    :line-height 30px
+
+    .toggle
+      :width 70px
+      :text-align center
+      :cursor pointer
+      :float right
+      :font-size 18px
+      :padding 0 10px 
+      :height 40px
+
+    .yellow
+      :background-color #ffff66
+
+    .yellow.disabled
+      :background-color #ffffcc
+
+    .black
+      :background-color #000
+      :color #fff
+
+    .black.disabled
+      :background-color #cccccc
 
   #font_controls
     :float right
     :margin 0
     :padding 0
+    :line-height 30px
+
 
 
     .fontSize
@@ -118,39 +174,50 @@ body
     :margin 0 10px
     :vertical-align top
     :overflow hidden
+    +border-radius(10px)
+    
+    .column_header
+      :background-color = !header_color
+      :padding 3px 10px
+
+      button
+        :font-size 1em
 
 
-  .list
-    :margin 0
-    :padding 0
-    :list-style none
+    .list
+      :margin 0
+      :padding 0
+      :list-style none
 
 
-  .hat_item
-    :clear both
+    .hat_item
+      :clear both
 
-    .actions
-      :float right
-      :height 20px
-      :padding 3px 3px 0
+      .actions
+        :float right
+        :height 20px
+        :padding 3px 3px 0
 
-      img
-        :height 16px
-        :width 16px
-        :padding 0 5px
+        button
+          :font-size .75em
+          :visibility hidden
+
+      &:hover
+        .actions
+          button
+            :visibility visible
+
+      .hat
+        :border-bottom 1px #000 solid
+        :padding 5px
+        :font-size 1em
         :margin 0
 
-    .hat
-      :border-bottom 1px #000 solid
-      :padding 5px
-      :font-size 1em
-      :margin 0
 
-
-    textarea
-      :width 98%
-      :min-height 60px
-      :font-size 1em
+      textarea
+        :width 98%
+        :min-height 60px
+        :font-size 1em
 
 
 
@@ -183,4 +250,17 @@ body
 
 
 
-
+button
+  :margin0 7px 0 0
+  :background-color #f5f5f5
+  :border 1px solid #dedede
+  :border-top 1px solid #eee
+  :border-left 1px solid #eee
+  +border-radius(.3em)
+  :font-family "Lucida Grande", Tahoma, Arial, Verdana, sans-serif
+  :font-size 100%
+  :line-height 130%
+  :text-decoration none
+  :font-weight bold
+  :color #565656
+  :cursor pointer

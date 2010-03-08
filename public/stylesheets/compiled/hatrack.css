@@ -1,25 +1,25 @@
-/* line 1, ../../../app/stylesheets/hatrack.sass */
+/* line 7, ../../../app/stylesheets/hatrack.sass */
 html {
   height: 100%; }
 
-/* line 4, ../../../app/stylesheets/hatrack.sass */
+/* line 10, ../../../app/stylesheets/hatrack.sass */
 body {
   margin: 0;
   padding: 0;
   height: 100%; }
 
-/* line 10, ../../../app/stylesheets/hatrack.sass */
+/* line 16, ../../../app/stylesheets/hatrack.sass */
 #hatrack {
   position: relative;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   width: 100%;
   height: 100%; }
-  /* line 17, ../../../app/stylesheets/hatrack.sass */
+  /* line 23, ../../../app/stylesheets/hatrack.sass */
   #hatrack img {
     margin: 0;
     padding: 0; }
-  /* line 21, ../../../app/stylesheets/hatrack.sass */
+  /* line 27, ../../../app/stylesheets/hatrack.sass */
   #hatrack #new_hat {
     position: absolute;
     width: 200px;
@@ -31,17 +31,17 @@ body {
     background-color: #fff;
     padding: 10px;
     display: none; }
-  /* line 33, ../../../app/stylesheets/hatrack.sass */
-  #hatrack #new_hat.enabled {
-    display: block; }
+  /* line 39, ../../../app/stylesheets/hatrack.sass */
+  #hatrack .underline {
+    text-decoration: underline; }
 
-/* line 36, ../../../app/stylesheets/hatrack.sass */
+/* line 42, ../../../app/stylesheets/hatrack.sass */
 #header {
   height: 40px;
   background-color: #3366ff;
   padding: 0 10px 0;
   position: relative; }
-  /* line 42, ../../../app/stylesheets/hatrack.sass */
+  /* line 48, ../../../app/stylesheets/hatrack.sass */
   #header #current_sprint {
     position: relative;
     display: inline;
@@ -49,11 +49,12 @@ body {
     font-weight: bold;
     font-size: 14px;
     padding: 10px 10px 0;
-    cursor: pointer; }
-    /* line 52, ../../../app/stylesheets/hatrack.sass */
+    cursor: pointer;
+    line-height: 30px; }
+    /* line 59, ../../../app/stylesheets/hatrack.sass */
     #header #current_sprint .formtastic {
       display: none; }
-  /* line 56, ../../../app/stylesheets/hatrack.sass */
+  /* line 63, ../../../app/stylesheets/hatrack.sass */
   #header #current_sprint.edit .formtastic {
     display: block;
     position: absolute;
@@ -64,11 +65,16 @@ body {
     top: 40px;
     background-color: #fff;
     padding: 10px; }
-  /* line 67, ../../../app/stylesheets/hatrack.sass */
+  /* line 74, ../../../app/stylesheets/hatrack.sass */
   #header #logo {
     display: inline;
-    font-size: 18px; }
-  /* line 71, ../../../app/stylesheets/hatrack.sass */
+    font-size: 18px;
+    line-height: 30px; }
+  /* line 80, ../../../app/stylesheets/hatrack.sass */
+  #header #new_sprint {
+    font-size: 18px;
+    line-height: 30px; }
+  /* line 85, ../../../app/stylesheets/hatrack.sass */
   #header #sprints {
     position: absolute;
     border: 1px black solid;
@@ -76,31 +82,73 @@ body {
     display: none;
     margin: 0;
     padding: 0; }
-  /* line 79, ../../../app/stylesheets/hatrack.sass */
+  /* line 93, ../../../app/stylesheets/hatrack.sass */
   #header #sprints.enable {
     display: block; }
-  /* line 83, ../../../app/stylesheets/hatrack.sass */
+  /* line 96, ../../../app/stylesheets/hatrack.sass */
+  #header #keyboard_controls {
+    float: right;
+    background: transparent url(/images/keyboard.png) no-repeat 0 0;
+    margin: 12px 20px;
+    height: 16px;
+    width: 36px;
+    line-height: 30px; }
+    /* line 104, ../../../app/stylesheets/hatrack.sass */
+    #header #keyboard_controls #hints {
+      display: none; }
+  /* line 107, ../../../app/stylesheets/hatrack.sass */
+  #header #column_controls {
+    background-color: #eee;
+    height: 40px;
+    float: right;
+    margin: 0 30px;
+    padding: 0;
+    line-height: 30px; }
+    /* line 115, ../../../app/stylesheets/hatrack.sass */
+    #header #column_controls .toggle {
+      width: 70px;
+      text-align: center;
+      cursor: pointer;
+      float: right;
+      font-size: 18px;
+      padding: 0 10px;
+      height: 40px; }
+    /* line 124, ../../../app/stylesheets/hatrack.sass */
+    #header #column_controls .yellow {
+      background-color: #ffff66; }
+    /* line 127, ../../../app/stylesheets/hatrack.sass */
+    #header #column_controls .yellow.disabled {
+      background-color: #ffffcc; }
+    /* line 130, ../../../app/stylesheets/hatrack.sass */
+    #header #column_controls .black {
+      background-color: #000;
+      color: #fff; }
+    /* line 134, ../../../app/stylesheets/hatrack.sass */
+    #header #column_controls .black.disabled {
+      background-color: #cccccc; }
+  /* line 137, ../../../app/stylesheets/hatrack.sass */
   #header #font_controls {
     float: right;
     margin: 0;
-    padding: 0; }
-    /* line 89, ../../../app/stylesheets/hatrack.sass */
+    padding: 0;
+    line-height: 30px; }
+    /* line 145, ../../../app/stylesheets/hatrack.sass */
     #header #font_controls .fontSize {
       font-weight: bold;
       font-size: 15px;
       color: #fff;
       text-decoration: none;
       padding: 0 5px; }
-    /* line 98, ../../../app/stylesheets/hatrack.sass */
+    /* line 154, ../../../app/stylesheets/hatrack.sass */
     #header #font_controls .fontSize.reset {
       font-size: 20px;
       text-decoration: none; }
-    /* line 102, ../../../app/stylesheets/hatrack.sass */
+    /* line 158, ../../../app/stylesheets/hatrack.sass */
     #header #font_controls .fontSize.up {
       font-size: 25px;
       text-decoration: none; }
 
-/* line 107, ../../../app/stylesheets/hatrack.sass */
+/* line 163, ../../../app/stylesheets/hatrack.sass */
 #racks {
   width: 100%;
   border-collapse: separate;
@@ -108,62 +156,89 @@ body {
   margin: 0;
   padding: 0;
   height: 90%; }
-  /* line 116, ../../../app/stylesheets/hatrack.sass */
+  /* line 172, ../../../app/stylesheets/hatrack.sass */
   #racks .rack {
     background-color: #ddd;
     margin: 0 10px;
     vertical-align: top;
-    overflow: hidden; }
-  /* line 123, ../../../app/stylesheets/hatrack.sass */
-  #racks .list {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-  /* line 129, ../../../app/stylesheets/hatrack.sass */
-  #racks .hat_item {
-    clear: both; }
-    /* line 132, ../../../app/stylesheets/hatrack.sass */
-    #racks .hat_item .actions {
-      float: right;
-      height: 20px;
-      padding: 3px 3px 0; }
-      /* line 137, ../../../app/stylesheets/hatrack.sass */
-      #racks .hat_item .actions img {
-        height: 16px;
-        width: 16px;
-        padding: 0 5px;
+    overflow: hidden;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px; }
+    /* line 179, ../../../app/stylesheets/hatrack.sass */
+    #racks .rack .column_header {
+      background-color: #3366ff;
+      padding: 3px 10px; }
+      /* line 183, ../../../app/stylesheets/hatrack.sass */
+      #racks .rack .column_header button {
+        font-size: 1em; }
+    /* line 187, ../../../app/stylesheets/hatrack.sass */
+    #racks .rack .list {
+      margin: 0;
+      padding: 0;
+      list-style: none; }
+    /* line 193, ../../../app/stylesheets/hatrack.sass */
+    #racks .rack .hat_item {
+      clear: both; }
+      /* line 196, ../../../app/stylesheets/hatrack.sass */
+      #racks .rack .hat_item .actions {
+        float: right;
+        height: 20px;
+        padding: 3px 3px 0; }
+        /* line 201, ../../../app/stylesheets/hatrack.sass */
+        #racks .rack .hat_item .actions button {
+          font-size: .75em;
+          visibility: hidden; }
+      /* line 207, ../../../app/stylesheets/hatrack.sass */
+      #racks .rack .hat_item:hover .actions button {
+        visibility: visible; }
+      /* line 210, ../../../app/stylesheets/hatrack.sass */
+      #racks .rack .hat_item .hat {
+        border-bottom: 1px #000 solid;
+        padding: 5px;
+        font-size: 1em;
         margin: 0; }
-    /* line 143, ../../../app/stylesheets/hatrack.sass */
-    #racks .hat_item .hat {
-      border-bottom: 1px #000 solid;
-      padding: 5px;
-      font-size: 1em;
-      margin: 0; }
-    /* line 150, ../../../app/stylesheets/hatrack.sass */
-    #racks .hat_item textarea {
-      width: 98%;
-      min-height: 60px;
-      font-size: 1em; }
-  /* line 157, ../../../app/stylesheets/hatrack.sass */
+      /* line 217, ../../../app/stylesheets/hatrack.sass */
+      #racks .rack .hat_item textarea {
+        width: 98%;
+        min-height: 60px;
+        font-size: 1em; }
+  /* line 224, ../../../app/stylesheets/hatrack.sass */
   #racks #yellow {
     background-color: :#ffffcc; }
-  /* line 161, ../../../app/stylesheets/hatrack.sass */
+  /* line 228, ../../../app/stylesheets/hatrack.sass */
   #racks #yellow .hat {
     background-color: #ffff00; }
-  /* line 165, ../../../app/stylesheets/hatrack.sass */
+  /* line 232, ../../../app/stylesheets/hatrack.sass */
   #racks #black {
     background-color: #cccccc; }
-  /* line 169, ../../../app/stylesheets/hatrack.sass */
+  /* line 236, ../../../app/stylesheets/hatrack.sass */
   #racks #black .hat {
     border-bottom: 0px;
     background-color: #000000;
     color: #ffffff;
     -moz-border-radius-bottomleft: 7px;
     -webkit-border-bottom-left-radius: 7px; }
-  /* line 177, ../../../app/stylesheets/hatrack.sass */
+  /* line 244, ../../../app/stylesheets/hatrack.sass */
   #racks .green_hat {
     background-color: #006600;
     color: #ffffff;
     margin: 0 0 0 20px;
     padding: 5px;
     font-size: 1em; }
+
+/* line 253, ../../../app/stylesheets/hatrack.sass */
+button {
+  margin0: 7px 0 0;
+  background-color: #f5f5f5;
+  border: 1px solid #dedede;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  -moz-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size: 100%;
+  line-height: 130%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #565656;
+  cursor: pointer; }

@@ -5,6 +5,13 @@
       %a.fontSize.reset A
       %a.fontSize.up A+
 
+    #keyboard_controls
+      #hints= "Hitting H opens Add Hat window, hitting B or Y next creates a new hat.  While textarea is open Alt-H opens window"
+
+    #column_controls
+      .toggle.black Black
+      .toggle.yellow Yellow
+
     #current_sprint
       %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
       %span#edit_sprint= "edit"
@@ -25,36 +32,30 @@
 
     #logo HatRack
 
-
-  #controls
-    %a.toggle.yellow Yellow
-    %a.toggle.black black
-    %a{:href => "/sprints/new"} New Sprint
+    %a#new_sprint{:href => "/sprints/new"} New Sprint
 
 
   %table#racks
     %tr
       %td#yellow.rack{:style => "width:50%;"}
         .column_header
-          %a.add_hat.yellow
-            %img{:src =>"/images/add.png"}
+          %button.add_hat.yellow{:value => 'yellow'} Add Yellow Hat
         %ul.list
           - @current_sprint.yellow_hats.each do |hat|
             = render :partial => '/hats/yellow', :locals => {:hat => hat}
 
       %td#black.rack{:style => "width:50%;"}
         .column_header
-          %a.add_hat.black
-            %img{:src =>"/images/add.png"}
-
+          %button.add_hat.black{:value => 'black'} Add Black Hat
+          
         %ul.list
           - @current_sprint.black_hats.each do |hat|
             = render :partial => '/hats/black', :locals => {:hat => hat} 
         
 
   #new_hat
-    %input.yellow{:type => 'button', :value => "Add Yellow Hat"}
-    %input.black{:type => 'button', :value => "Add Black Hat"}
+    %button.add_hat.yellow{:value => 'yellow'} Add <span class="underline">Y</span>ellow Hat
+    %button.add_hat.black{:value => 'black'} Add <span class="underline">B</span>lack Hat
 
 
 
