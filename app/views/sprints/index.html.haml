@@ -9,8 +9,12 @@
       #hints= "Hitting H opens Add Hat window, hitting B or Y next creates a new hat.  While textarea is open Alt-H opens window"
 
     #column_controls
-      .toggle.black Black
-      .toggle.yellow Yellow
+      .toggle.black
+        Black
+        %img{:src => '/images/show.png'}
+      .toggle.yellow
+        Yellow
+        %img{:src => '/images/show.png'}
 
     #current_sprint
       %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
@@ -23,7 +27,7 @@
           = form.input :end_date,:input_html => { :class => 'date_input' }
         - form.buttons do
           = form.commit_button
-          %input{:type => 'button', :value => 'Cancel'}
+          %input.cancel{:type => 'button', :value => 'Cancel'}
 
     %ul#sprints
       - @sprints.each do |sprint|
@@ -39,6 +43,7 @@
     %tr
       %td#yellow.rack{:style => "width:50%;"}
         .column_header
+          %img.toggle.yellow{:src => '/images/hide.png'}
           %button.add_hat.yellow{:value => 'yellow'} Add Yellow Hat
         %ul.list
           - @current_sprint.yellow_hats.each do |hat|
@@ -46,6 +51,7 @@
 
       %td#black.rack{:style => "width:50%;"}
         .column_header
+          %img.toggle.black{:src => '/images/hide.png'}
           %button.add_hat.black{:value => 'black'} Add Black Hat
           
         %ul.list

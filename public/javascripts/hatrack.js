@@ -16,6 +16,7 @@ var Hatrack = {
     $('.date_input').datepicker({dateFormat: 'yy-mm-dd'});
 
     $('#edit_sprint').bind('click', Hatrack.editSprint);
+    $('.cancel').bind('click', Hatrack.cancelEdit);
 
     if (Hatrack.font_size) {
       $('#hatrack').css('font-size', Hatrack.font_size);
@@ -131,7 +132,12 @@ var Hatrack = {
   },
 
   editSprint: function(event) {
-    $(event.target).parent('#current_sprint').addClass('edit');
+    $('#current_sprint').addClass('edit');
+    Hatrack.screen_dirty = true;
+  },
+  cancelEdit: function(event) {
+    $('#current_sprint').removeClass('edit');
+    Hatrack.screen_dirty = false;
   },
 
   screen_dirty: false,

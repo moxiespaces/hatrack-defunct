@@ -11,7 +11,6 @@ javascripts:
 stylesheets:
   blueprint:
     - public/stylesheets/compiled/screen.css
-    - public/stylesheets/compiled/print.css
   common:
     - public/stylesheets/jquery-ui.css
     - public/stylesheets/formtastic.css
