@@ -7,6 +7,10 @@
   :-moz-border-radius = !rad
   :-webkit-border-radius = !rad
 
+=border-radius-top(!rad)
+  :-moz-border-radius = !rad !rad 0 0
+  :-webkit-border-radius = !rad !rad 0 0
+
 html
   :height 100%
 
@@ -86,13 +90,6 @@ body
     :line-height 30px
 
 
-  #new_sprint
-    :text-transform lowercase
-    :color #fff
-    :font-size 18px
-    :line-height 30px
-
-
   #sprints
     :position absolute
     :border 1px black solid
@@ -106,11 +103,12 @@ body
 
   #keyboard_controls
     :float right
-    :background transparent url(/images/keyboard.png) no-repeat 0 0
-    :margin 12px 20px
-    :height 16px
-    :width 36px 
-    :line-height 30px
+    :margin 3px 10px
+    :padding 1px 3px
+    :font-size 14px
+    :color #fff
+    :border 3px #fff solid
+    +border-radius(20px)
 
     #hints
       :display none
@@ -194,6 +192,7 @@ body
     .column_header
       :background-color = !header_color
       :padding 6px 10px
+      +border-radius-top(9px)
 
 
       button

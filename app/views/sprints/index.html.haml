@@ -6,6 +6,7 @@
       %a.fontSize.up A+
 
     #keyboard_controls
+      ?
       #hints= "Hitting H opens Add Hat window, hitting B or Y next creates a new hat.  While textarea is open Alt-H opens window"
 
     #column_controls
@@ -18,7 +19,9 @@
 
     #current_sprint
       %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
-      %span#edit_sprint= "edit"
+      %span#edit_sprint edit
+      %span#new_sprint new
+      %a#new_ssprint{:href => "/sprints/new"} New Sprint
 
       #edit_sprint_form
         - semantic_form_for @current_sprint do |form|
@@ -44,9 +47,9 @@
         %li
           %a{:href => "/sprints/show/#{sprint.id}"}= "#{sprint.name} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
 
+
     #logo HatRack
 
-    %a#new_sprint{:href => "/sprints/new"} New Sprint
 
 
   %table#racks
