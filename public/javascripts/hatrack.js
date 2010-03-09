@@ -134,24 +134,30 @@ var Hatrack = {
   },
 
   editSprint: function(event) {
-    $('#current_sprint').addClass('edit');
+    $('#edit_sprint_form').show();
     Hatrack.screen_dirty = true;
   },
   cancelEdit: function(event) {
-    $('#current_sprint').removeClass('edit');
+    $('#edit_sprint_form').hide();
     Hatrack.screen_dirty = false;
   },
-
+  newSprint: function(event) {
+    $('#new_sprint_form').show();
+    Hatrack.screen_dirty = true;
+  },
+  cancelNewEdit: function(event) {
+    $('#new_sprint_form').hide();
+    Hatrack.screen_dirty = false;
+  },
   screen_dirty: false,
   new_hat_enabled: false,
   keyWatcher: function(event) {
-    if ((!Hatrack.screen_dirty && event.keyCode == 72) ||
-        (event.altKey && event.keyCode == 72 )) {
+    if ( (!Hatrack.screen_dirty && $.inArray( event.keyCode , [72,78] ) > -1 ) ||
+         (event.altKey && $.inArray( event.keyCode , [72,78] ) > -1 ) ) {
       $('#new_hat').show();
       Hatrack.new_hat_enabled = true;
       return false;
     }
-
     if (Hatrack.new_hat_enabled) {
       var color = null;
       switch (event.keyCode) {

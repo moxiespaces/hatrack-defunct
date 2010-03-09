@@ -20,14 +20,24 @@
       %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
       %span#edit_sprint= "edit"
 
-      - semantic_form_for @current_sprint do |form|
-        - form.inputs do
-          = form.input :name
-          = form.input :start_date,:input_html => { :class => 'date_input' }
-          = form.input :end_date,:input_html => { :class => 'date_input' }
-        - form.buttons do
-          = form.commit_button
-          %input.cancel{:type => 'button', :value => 'Cancel'}
+      #edit_sprint_form
+        - semantic_form_for @current_sprint do |form|
+          - form.inputs do
+            = form.input :name
+            = form.input :start_date,:input_html => { :class => 'date_input' }
+            = form.input :end_date,:input_html => { :class => 'date_input' }
+          - form.buttons do
+            = form.commit_button
+            %input.cancel{:type => 'button', :value => 'Cancel'}
+
+      #new_sprint_form
+        - semantic_form_for Sprint.new do |form|
+          - form.inputs do
+            = form.input :name
+            = form.input :start_date,:input_html => { :class => 'date_input' }
+          - form.buttons do
+            = form.commit_button
+            %input.cancel{:type => 'button', :value => 'Cancel'}
 
     %ul#sprints
       - @sprints.each do |sprint|
