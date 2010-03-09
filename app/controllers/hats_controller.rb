@@ -73,4 +73,20 @@ class HatsController < ApplicationController
 
   end
 
+  def promote
+    sprint = current_user.sprints.find(params[:sprint_id])
+
+    next_sprint = current_user.sprints.first(:conditions => {:end_date => nil})
+    if next_sprint.blank? || next_sprint == sprint
+      render :status => 400, :json => {:msg => 'Please Start a New Sprint'}.to_json
+    else
+      hat = sprint.black_hats.find(params[:id])
+      hat.promotions = hat.promotions ? hat.promotions + 1 : 1
+      next_sprint.black_hats << hat
+      next_sprint.save
+      render :status => 200, :json => {:msg => "Hat has been promoted to #{next_sprint.name}" }.to_json
+    end
+
+
+  end
 end

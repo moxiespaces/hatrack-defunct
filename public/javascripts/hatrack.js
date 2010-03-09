@@ -4,8 +4,8 @@ var Hatrack = {
   font_size: null,
   sprint_id: null,
   colors: ['yellow','black','green','red','white'] ,
-  init: function(){
-    $('#current_name').bind('click',Hatrack.showSprints);
+  init: function() {
+    $('#current_name').bind('click', Hatrack.showSprints);
 
     $('.add_hat').bind('click', Hatrack.determineColor);
 
@@ -18,6 +18,8 @@ var Hatrack = {
     $('#edit_sprint').bind('click', Hatrack.editSprint);
     $('.cancel').bind('click', Hatrack.cancelEdit);
 
+    $('.promote').bind('click', Hatrack.promote);
+
     if (Hatrack.font_size) {
       $('#hatrack').css('font-size', Hatrack.font_size);
     }
@@ -25,7 +27,7 @@ var Hatrack = {
     $('body').keydown(Hatrack.keyWatcher);
     Hatrack.setup();
   },
-  setup: function(editable,hat) {
+  setup: function(editable, hat) {
     for (var i in Hatrack.colors) {
       $('.hat.e.' + Hatrack.colors[i]).editable('/hats/update?sprint_id=' + Hatrack.sprint_id + '&type=' + Hatrack.colors[i], {
         type: 'textarea',submit: 'Save',cancel: 'Cancel',
@@ -34,7 +36,7 @@ var Hatrack = {
       });
     }
 
-    var green_opts =  {
+    var green_opts = {
       type: 'textarea',submit: 'Save',cancel: 'Cancel', onblur: 'ignore',onedit:Hatrack.onEdit,
       placeholder: 'Add a green hat',onreset: Hatrack.setup }
 
@@ -47,12 +49,12 @@ var Hatrack = {
 
   },
 
-  determineColor:function(event){
+  determineColor:function(event) {
     Hatrack.addHat($(event.target).val());
   },
   addHat: function(color) {
     Hatrack.resetNewHat();
-    
+
     if ($('.hat.new.' + color).length > 0) {
       $('.hat.new.' + color).click();
       return false;
@@ -64,7 +66,7 @@ var Hatrack = {
     var new_hat = $('#hat_' + id);
     new_hat.editable('/hats/create?sprint_id=' + Hatrack.sprint_id + '&type=' + color, {
       type: 'textarea',submit: 'Save',cancel: 'Cancel',onedit:Hatrack.onNewEdit,
-      onreset: Hatrack.setup, onblur: 'ignore',placeholder: 'Enter a hat', 
+      onreset: Hatrack.setup, onblur: 'ignore',placeholder: 'Enter a hat',
       callback:function(value, settings) {
         new_hat.parent('li').replaceWith(value);
         Hatrack.setup();
@@ -75,10 +77,10 @@ var Hatrack = {
     return false;
   },
 
-  onNewEdit:function(editable,hat){
+  onNewEdit:function(editable, hat) {
     $(hat).html('');
   },
-  onEdit:function(editable,hat){
+  onEdit:function(editable, hat) {
     Hatrack.screen_dirty = true
   },
 
@@ -86,11 +88,11 @@ var Hatrack = {
     var color = event.target.className.split(' ')[1];
     $('#' + color).toggle();
 
-    $('.rack:visible').each(function(i,e){
-      $('.toggle.'+e.id).removeClass('disabled');
+    $('.rack:visible').each(function(i, e) {
+      $('.toggle.' + e.id).removeClass('disabled');
     });
-    $('.rack:hidden').each(function(i,e){
-      $('.toggle.'+e.id).addClass('disabled');
+    $('.rack:hidden').each(function(i, e) {
+      $('.toggle.' + e.id).addClass('disabled');
     });
 
     return false;
@@ -178,16 +180,29 @@ var Hatrack = {
     Hatrack.new_hat_enabled = false;
   },
 
-  showSprints:function(event){
+  showSprints:function(event) {
     $('#sprints').addClass('enable');
     $('body').bind('click', Hatrack.resetWindows);
   },
 
-  resetWindows:function(event){
-    if ( event.target.id != 'current_name' ){
+  resetWindows:function(event) {
+    if (event.target.id != 'current_name') {
       $('#sprints').removeClass('enable');
       $('body').unbind('click', Hatrack.resetWindows);
     }
+  },
+
+  promote: function(event) {
+    $.ajax({url:'/hats/promote/' + $(event.target).val(), dataType:'json',
+      data:{sprint_id: Hatrack.sprint_id},
+      success: function(data) {
+        console.log(data)
+        $.jGrowl(data.msg);
+      },
+      error: function(request,data){
+        $.jGrowl('Please Start a New Sprint');
+      }
+    });
   }
 }
 

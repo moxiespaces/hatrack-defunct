@@ -194,34 +194,47 @@ body {
         padding: 3px 3px 0; }
         /* line 213, ../../../app/stylesheets/hatrack.sass */
         #racks .rack .hat_item .actions button {
+          margin: 3px;
+          float: right;
           font-size: .75em;
           visibility: hidden; }
-      /* line 219, ../../../app/stylesheets/hatrack.sass */
+        /* line 219, ../../../app/stylesheets/hatrack.sass */
+        #racks .rack .hat_item .actions .promotions {
+          float: right;
+          background-color: #fffcc4;
+          padding: 2px 4px;
+          margin: 3px;
+          font-size: .75em;
+          color: #565656;
+          font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+          -moz-border-radius: 5px;
+          -webkit-border-radius: 5px; }
+      /* line 231, ../../../app/stylesheets/hatrack.sass */
       #racks .rack .hat_item:hover .actions button {
         visibility: visible; }
-      /* line 222, ../../../app/stylesheets/hatrack.sass */
+      /* line 234, ../../../app/stylesheets/hatrack.sass */
       #racks .rack .hat_item .hat {
         border-bottom: 1px solid;
         border-color: #0017b2;
         padding: 5px;
         font-size: 1em;
         margin: 0; }
-      /* line 230, ../../../app/stylesheets/hatrack.sass */
+      /* line 242, ../../../app/stylesheets/hatrack.sass */
       #racks .rack .hat_item textarea {
         width: 98%;
         min-height: 60px;
         font-size: 1em; }
-  /* line 239, ../../../app/stylesheets/hatrack.sass */
+  /* line 251, ../../../app/stylesheets/hatrack.sass */
   #racks #yellow .hat {
     background-color: #fffcc4; }
-  /* line 245, ../../../app/stylesheets/hatrack.sass */
+  /* line 257, ../../../app/stylesheets/hatrack.sass */
   #racks #black .hat {
     border-bottom: 0px;
     background-color: #051e36;
     color: #ffffff;
     -moz-border-radius-bottomleft: 7px;
     -webkit-border-bottom-left-radius: 7px; }
-  /* line 253, ../../../app/stylesheets/hatrack.sass */
+  /* line 265, ../../../app/stylesheets/hatrack.sass */
   #racks .green_hat {
     background-color: #2f8738;
     color: #ffffff;
@@ -229,7 +242,7 @@ body {
     padding: 5px;
     font-size: 1em; }
 
-/* line 262, ../../../app/stylesheets/hatrack.sass */
+/* line 274, ../../../app/stylesheets/hatrack.sass */
 button {
   margin: 0 7px;
   background-color: #f5f5f5;

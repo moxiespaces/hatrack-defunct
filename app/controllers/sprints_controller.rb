@@ -11,7 +11,7 @@ class SprintsController < ApplicationController
       @sprints = current_user.sprints.all
     end
 
-    @current_sprint = current_user.sprints.first(:conditions => {:end_date => nil})
+    @current_sprint = current_user.sprints.first(:conditions => {:end_date => nil}) || @sprints.first
     remove_current_sprint
   end
 
@@ -47,9 +47,14 @@ class SprintsController < ApplicationController
 
   def get_sprints
     @sprints = current_user.sprints.all(:order => 'end_date desc, start_date desc')
+    if @sprints.last.end_date == nil
+      @sprints.unshift( @sprints.pop )
+    end
   end
 
   def remove_current_sprint
     @sprints = @sprints - [@current_sprint]
   end
+  
+
 end

@@ -7,6 +7,7 @@ javascripts:
     - public/javascripts/jquery.js
     - public/javascripts/jquery-ui.min.js
     - public/javascripts/jquery.jeditable.js
+    - public/javascripts/jquery.jgrowl.js
     - public/javascripts/hatrack.js
 stylesheets:
   blueprint:
@@ -15,4 +16,5 @@ stylesheets:
     - public/stylesheets/jquery-ui.css
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
+    - public/stylesheets/jquery.jgrowl.css
     - public/stylesheets/compiled/hatrack.css

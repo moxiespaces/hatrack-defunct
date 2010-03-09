@@ -1,5 +1,7 @@
 %li.hat_item
   .actions
+    - if hat.promotions
+      .promotions{:title => "This hat has been promoted #{pluralize(hat.promotions,'time')}  "}= hat.promotions
     %button.promote{:value => hat.id} Promote to next sprint
 
   .hat.e.black{:id=>"black_#{hat.id}"}= hat.text
