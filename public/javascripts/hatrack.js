@@ -16,6 +16,7 @@ var Hatrack = {
     $('.date_input').datepicker({dateFormat: 'yy-mm-dd'});
 
     $('#edit_sprint').bind('click', Hatrack.editSprint);
+    $('#new_sprint').bind('click', Hatrack.newSprint);
     $('.cancel').bind('click', Hatrack.cancelEdit);
 
     $('.promote').bind('click', Hatrack.promote);
@@ -134,20 +135,21 @@ var Hatrack = {
   },
 
   editSprint: function(event) {
+    $('#new_sprint_form').hide();
     $('#edit_sprint_form').show();
     Hatrack.screen_dirty = true;
   },
   cancelEdit: function(event) {
     $('#edit_sprint_form').hide();
-    Hatrack.screen_dirty = false;
-  },
-  newSprint: function(event) {
-    $('#new_sprint_form').show();
-    Hatrack.screen_dirty = true;
-  },
-  cancelNewEdit: function(event) {
     $('#new_sprint_form').hide();
     Hatrack.screen_dirty = false;
+    return false;
+  },
+  newSprint: function(event) {
+    $('#edit_sprint_form').hide();
+    $('#new_sprint_form').show();
+    $('#new_sprint_form input:text:first').focus()
+    Hatrack.screen_dirty = true;
   },
   screen_dirty: false,
   new_hat_enabled: false,

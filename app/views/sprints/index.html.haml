@@ -9,7 +9,6 @@
       ?
       #hints= "Hitting H opens Add Hat window, hitting B or Y next creates a new hat.  While textarea is open Alt-H opens window"
 
-    %a.logout{} Logout
 
     #column_controls
       .toggle.black
@@ -20,37 +19,37 @@
         %img{:src => '/images/show.png'}
 
     #current_sprint
-      %span#current_name= "#{@current_sprint.name} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+      %span#current_name{:title => @current_sprint.name}= "#{truncate(@current_sprint.name,30)} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
       %span#edit_sprint edit
       %span#new_sprint new
-      %a#new_ssprint{:href => "/sprints/new"} New Sprint
-
-      #edit_sprint_form
+      
+      #edit_sprint_form.form
         - semantic_form_for @current_sprint do |form|
           - form.inputs do
             = form.input :name
             = form.input :start_date,:input_html => { :class => 'date_input' }
             = form.input :end_date,:input_html => { :class => 'date_input' }
           - form.buttons do
-            = form.commit_button
-            %input.cancel{:type => 'button', :value => 'Cancel'}
+            %button#sprint_submit.update{:type => 'submit'} Update Sprint
+            %button.cancel Cancel
 
-      #new_sprint_form
+      #new_sprint_form.form
         - semantic_form_for Sprint.new do |form|
           - form.inputs do
-            = form.input :name
-            = form.input :start_date,:input_html => { :class => 'date_input' }
+            = form.input :name,:input_html => { :id => 'new_sprint[name]', :value => 'Enter a Sprint Name'}
+            = form.input :start_date,:input_html => { :id => 'new_sprint[start_date]', :class => 'date_input', :value => Date.today }
           - form.buttons do
-            = form.commit_button
-            %input.cancel{:type => 'button', :value => 'Cancel'}
+            %button#sprint_submit.create{:type => 'submit'} Create Sprint
+            %button.cancel Cancel
 
     %ul#sprints
-      - @sprints.each do |sprint|
+      - @sprints[0..9].each do |sprint|
         %li
-          %a{:href => "/sprints/show/#{sprint.id}"}= "#{sprint.name} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
+          %a{:title => sprint.name, :href => "/sprints/show/#{sprint.id}"}= "#{truncate(sprint.name,25)} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
 
 
     #logo HatRack
+    %a.logout{} Logout
 
 
 

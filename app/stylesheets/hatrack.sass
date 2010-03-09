@@ -11,6 +11,10 @@
   :-moz-border-radius = !rad !rad 0 0
   :-webkit-border-radius = !rad !rad 0 0
 
+=border-radius-bottom(!rad)
+  :-moz-border-radius = 0 0 !rad !rad
+  :-webkit-border-radius = 0 0 !rad !rad
+
 html
   :height 100%
 
@@ -64,22 +68,24 @@ body
 
 
 
-  #edit_sprint_form
-    :display none
 
-  #new_sprint_form
-    :display none
+    .form
+      :display none
+      :position absolute
+      :width 300px
+      :height 260px
+      :border 2px  solid
+      :border-color = !header_color
+      :left 100px
+      :top 39px
+      :background #E1E3F5 url(/images/form_bg.png) repeat-x 0 0
+      :padding 10px
+      :color #000
+      +border-radius-bottom(10px)
 
-  .formtastic
-    :position absolute
-    :width 300px
-    :height 300px
-    :border 2px black solid
-    :left 100px
-    :top 40px
-    :background-color #fff
-    :padding 10px
-
+    #new_sprint_form
+      :height 190px
+      
   #logo
     :display inline
     :font-size 18px
@@ -91,12 +97,34 @@ body
 
 
   #sprints
-    :position absolute
-    :border 1px black solid
-    :background-color #fff
     :display none
-    :margin 0
-    :padding 0
+    :position absolute
+    :width 300px
+    :min-height 120px
+    :max-height 240px
+    :border 2px  solid
+    :border-color = !header_color
+    :left 50px
+    :top 39px
+    :background #E1E3F5 url(/images/form_bg.png) repeat-x 0 0
+    :padding 15px 0
+    :color #000
+    :list-style none
+    +border-radius-bottom(10px)
+
+    a
+      :display block
+      :color #000
+      :text-decoration none
+      :padding 3px 10px
+      :font-size 14px
+      :line-height 18px
+
+    a:hover
+      :background-color = !header_color
+      :color #fff
+
+
 
   #sprints.enable
     :display block

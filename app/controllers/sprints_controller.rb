@@ -27,12 +27,15 @@ class SprintsController < ApplicationController
   end
   
 
-  def new
+  def create
     current_user.sprints.all(:conditions => {:end_date => nil} ).each do |sprint|
       sprint.end_date = Date.today
       sprint.save
     end
-    current_user.sprints << Sprint.new(:name => 'New Sprint',:start_date => Date.today)
+
+    name = params[:sprint][:name].blank? ? 'New Sprint' : params[:sprint][:name]
+    date = params[:sprint][:start_date].blank? ? Date.today : Date.parse(params[:sprint][:start_date])
+    current_user.sprints << Sprint.new(:name => name, :start_date => date)
     redirect_to(:action => :index)
   end
 
