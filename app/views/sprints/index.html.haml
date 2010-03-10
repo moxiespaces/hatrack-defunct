@@ -17,7 +17,7 @@
 
 
     #current_sprint
-      %span#current_name{:title => @current_sprint.name}= "#{truncate(@current_sprint.name,30)} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+      %span#current_name{:title => @current_sprint.name}= "#{truncate(@current_sprint.name,{:lenght => 30})} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
 
       #edit_sprint_form.form
         - semantic_form_for @current_sprint do |form|
@@ -44,7 +44,7 @@
     %ul#sprints
       - @sprints[0..9].each do |sprint|
         %li
-          %a{:title => sprint.name, :href => "/sprints/show/#{sprint.id}"}= "#{truncate(sprint.name,25)} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
+          %a{:title => sprint.name, :href => "/sprints/show/#{sprint.id}"}= "#{truncate(sprint.name,{:length => 25})} (#{print_date(sprint.start_date) } - #{print_date(sprint.end_date,"Current") })"
 
 
     #logo HatRack
