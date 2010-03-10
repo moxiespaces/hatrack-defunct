@@ -21,6 +21,8 @@ var Hatrack = {
 
     $('.promote').bind('click', Hatrack.promote);
 
+    $('#toggle_help').bind('click', function(){$('#hints').toggle()} );
+
     if (Hatrack.font_size) {
       $('#hatrack').css('font-size', Hatrack.font_size);
     }
@@ -140,8 +142,7 @@ var Hatrack = {
     Hatrack.screen_dirty = true;
   },
   cancelEdit: function(event) {
-    $('#edit_sprint_form').hide();
-    $('#new_sprint_form').hide();
+    $('.form').hide();
     Hatrack.screen_dirty = false;
     return false;
   },
@@ -154,6 +155,11 @@ var Hatrack = {
   screen_dirty: false,
   new_hat_enabled: false,
   keyWatcher: function(event) {
+    if ( event.keyCode == 27){
+      Hatrack.resetAllPopUps();
+      return;
+    }
+
     if ( (!Hatrack.screen_dirty && $.inArray( event.keyCode , [72,78] ) > -1 ) ||
          (event.altKey && $.inArray( event.keyCode , [72,78] ) > -1 ) ) {
       $('#new_hat').show();
@@ -188,15 +194,26 @@ var Hatrack = {
     Hatrack.new_hat_enabled = false;
   },
 
+  resetAllPopUps: function(){
+    Hatrack.resetNewHat();
+    Hatrack.cancelEdit();
+    Hatrack.hideSprints();
+    $('#hints').hide();
+
+  },
+
   showSprints:function(event) {
-    $('#sprints').addClass('enable');
+    $('#sprints').show();
     $('body').bind('click', Hatrack.resetWindows);
   },
 
+  hideSprints:function(){
+    $('#sprints').hide();
+    $('body').unbind('click', Hatrack.resetWindows);
+  },
   resetWindows:function(event) {
     if (event.target.id != 'current_name') {
-      $('#sprints').removeClass('enable');
-      $('body').unbind('click', Hatrack.resetWindows);
+      Hatrack.hideSprints();
     }
   },
 

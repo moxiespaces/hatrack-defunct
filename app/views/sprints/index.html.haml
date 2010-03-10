@@ -6,8 +6,8 @@
       %a.fontSize.up A+
 
     #keyboard_controls
-      ?
-      #hints= "Hitting H opens Add Hat window, hitting B or Y next creates a new hat.  While textarea is open Alt-H opens window"
+      #toggle_help ?
+      #hints= render :partial => '/sprints/faq'
 
 
     #column_controls
@@ -20,9 +20,7 @@
 
     #current_sprint
       %span#current_name{:title => @current_sprint.name}= "#{truncate(@current_sprint.name,30)} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
-      %span#edit_sprint edit
-      %span#new_sprint new
-      
+
       #edit_sprint_form.form
         - semantic_form_for @current_sprint do |form|
           - form.inputs do
@@ -41,6 +39,9 @@
           - form.buttons do
             %button#sprint_submit.create{:type => 'submit'} Create Sprint
             %button.cancel Cancel
+
+    #edit_sprint.form_toggle edit
+    #new_sprint.form_toggle new
 
     %ul#sprints
       - @sprints[0..9].each do |sprint|

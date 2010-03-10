@@ -22,6 +22,7 @@ body
   :margin 0 
   :padding 0
   :height 100%
+  :min-width 950px
 
 
 #hatrack 
@@ -36,16 +37,20 @@ body
     :padding 0
 
   #new_hat
-    :position absolute
-    :width 200px
-    :height 30px
-    :left 300px
-    :top 25px
-    :border 2px #000 solid
-    :text-align center
-    :background-color #fff
-    :padding 10px
     :display none
+    :position absolute
+    :width 21em
+    :text-align center
+    :min-height 30px
+    :border 2px  solid
+    :border-color = !header_color
+    :left 100px
+    :top 36px
+    :background #E1E3F5 url(/images/form_bg.png) repeat-x 0 0
+    :padding 10px
+    :color #000
+    :line-height 30px
+    +border-radius-bottom(10px)
 
   .underline
     :text-decoration underline
@@ -55,17 +60,27 @@ body
   :background-color = !header_color
   :padding 0 10px 0
   :position relative
+  
+
+  .form_toggle
+    :float left
+    :color #fff
+    :font-size 12px
+    :margin 16px 0 0 
+    :padding 0 5px
 
   #current_sprint
+    :float left
     :position relative
     :display inline
-    :color #fff
+    :background #fff url(/images/show_sprints.png) no-repeat 98% 8px
+    :color = !header_color
     :font-weight bold
     :font-size 14px
-    :padding 10px 10px 0
+    :padding 3px 20px 3px 10px
+    :margin 6px 0 0 
     :cursor pointer
-    :line-height 30px
-
+    +border-radius(10px)
 
 
 
@@ -77,23 +92,26 @@ body
       :border 2px  solid
       :border-color = !header_color
       :left 100px
-      :top 39px
+      :top 34px
       :background #E1E3F5 url(/images/form_bg.png) repeat-x 0 0
       :padding 10px
       :color #000
+      :line-height 30px
       +border-radius-bottom(10px)
 
     #new_sprint_form
       :height 190px
       
   #logo
-    :display inline
     :font-size 18px
     :text-transform uppercase
     :font-family Tahoma, Arial, Verdana, sans-serif
     :letter-spacing 2px
     :color #fff
     :line-height 30px
+    :position absolute
+    :left 46%
+    :top 4px
 
 
   #sprints
@@ -126,9 +144,6 @@ body
 
 
 
-  #sprints.enable
-    :display block
-
   #keyboard_controls
     :float right
     :margin 3px 10px
@@ -140,6 +155,29 @@ body
 
     #hints
       :display none
+      :position absolute
+      :width 600px
+      :min-height 120px
+      :max-height 240px
+      :border 2px  solid
+      :border-color = !header_color
+      :right 50px
+      :top 39px
+      :background #E1E3F5 url(/images/form_bg.png) repeat-x 0 0
+      :padding 15px 10px 
+      :color #000
+      :list-style none
+      +border-radius-bottom(10px)
+
+      ul
+        :list-style none
+
+        .question
+          :font-weight bold
+
+        .answer
+          :margin-bottom 8px
+        
 
   #column_controls
     :float right
@@ -149,6 +187,8 @@ body
     .toggle
       :display none
       :float right
+      :width 70px
+      :text-align center
       :cursor pointer
       :font-size 14px
       :padding 3px 10px
