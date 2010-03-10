@@ -329,3 +329,18 @@ button {
   font-weight: bold;
   color: #565656;
   cursor: pointer; }
+
+/* line 365, ../../../app/stylesheets/hatrack.sass */
+.logout {
+  background-color: #0017b2;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  text-decoration: none; }
+  /* line 375, ../../../app/stylesheets/hatrack.sass */
+  .logout:hover {
+    background-color: #fff;
+    color: #0017b2; }
