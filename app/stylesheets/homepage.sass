@@ -1,0 +1,31 @@
+@import mixins
+
+#homepage
+  +font_base
+
+  #header
+    :height 40px
+    :background-color = !header_color
+    :padding 0 10px 0
+    :position relative
+
+  #logo
+    +logo
+
+  #content
+    :margin 0 auto
+    :width 400px
+    +grad_background
+    +border-radius-bottom(10px)
+    :border 2px  solid
+    :border-color = !header_color
+    :padding 15px 10px 
+
+    .form
+      :font-weight bold
+      :font-size 14px
+
+      input[type=text]
+        width
+
+      

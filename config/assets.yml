@@ -18,3 +18,5 @@ stylesheets:
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/jquery.jgrowl.css
     - public/stylesheets/compiled/hatrack.css
+  homepage: 
+    - public/stylesheets/compiled/homepage.css

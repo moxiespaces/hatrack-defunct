@@ -11,3 +11,5 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 form.formtastic fieldset ol li{margin-bottom: 0}
 form.formtastic fieldset ol li.string input { width:99%; }
 form.formtastic fieldset.buttons { padding-left:15%; }
+form.formtastic fieldset ol li label { width:70%;  }
+

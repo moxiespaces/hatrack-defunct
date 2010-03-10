@@ -1,0 +1,36 @@
+/* line 3, ../../../app/stylesheets/homepage.sass */
+#homepage {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: .08em; }
+  /* line 6, ../../../app/stylesheets/homepage.sass */
+  #homepage #header {
+    height: 40px;
+    background-color: #0017b2;
+    padding: 0 10px 0;
+    position: relative; }
+  /* line 12, ../../../app/stylesheets/homepage.sass */
+  #homepage #logo {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: Tahoma, Arial, Verdana, sans-serif;
+    letter-spacing: 2px;
+    color: #fff;
+    line-height: 30px;
+    position: absolute;
+    left: 46%;
+    top: 4px; }
+  /* line 15, ../../../app/stylesheets/homepage.sass */
+  #homepage #content {
+    margin: 0 auto;
+    width: 400px;
+    background: #E1E3F5 url(/images/form_bg.png) repeat-x 0 0;
+    -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    border: 2px  solid;
+    border-color: #0017b2;
+    padding: 15px 10px; }
+    /* line 24, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form {
+      font-weight: bold;
+      font-size: 14px; }
