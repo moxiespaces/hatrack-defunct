@@ -27,7 +27,7 @@ var Hatrack = {
       $('#hatrack').css('font-size', Hatrack.font_size);
     }
 
-    $('body').keydown(Hatrack.keyWatcher);
+    $('html').keydown(Hatrack.keyWatcher);
     Hatrack.setup();
   },
   setup: function(editable, hat) {
@@ -221,7 +221,6 @@ var Hatrack = {
     $.ajax({url:'/hats/promote/' + $(event.target).val(), dataType:'json',
       data:{sprint_id: Hatrack.sprint_id},
       success: function(data) {
-        console.log(data)
         $.jGrowl(data.msg);
       },
       error: function(request,data){
