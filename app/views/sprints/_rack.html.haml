@@ -1,0 +1,7 @@
+%td.rack{:id => color,:style => "width:#{100/num_cols}%;"}
+  .column_header
+    %img.toggle{'data-color' => color, :src => '/images/hide.png'}
+    %button.add_hat{:class => color, :value => color}= "Add #{color.capitalize} Hat"
+  %ul.list
+    - hats.each do |hat|
+      = render :partial => "/hats/#{color}", :locals => {:hat => hat}

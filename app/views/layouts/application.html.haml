@@ -7,14 +7,30 @@
   %body
     #homepage
       #header
-        #logo HATRACK
-        
+        #login
+          - semantic_form_for resource_name, resource, :url => session_path(resource_name) do |form|
+            - form.inputs do
+              %div
+                = form.input :email, :required => false
+                = form.input :password, :required => false
+
+              - if devise_mapping.rememberable?
+                = form.input :remember_me, :as => :boolean, :required => false
+            - form.buttons do
+              %button{:type => 'submit'} Sign in
+
+
+
+          
+
+        = link_to 'HATRACK' , '/' ,:id => 'logo' 
+
       #content
         = yield
 
 
   :javascript
-
+    $('#user_email').focus();
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
     try {

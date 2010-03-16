@@ -5,10 +5,10 @@
       = form.input :email
       = form.input :password
 
-      //- if devise_mapping.rememberable?
-      = form.input :remember_me, :as => :boolean
+      - if devise_mapping.rememberable?
+        = form.input :remember_me, :as => :boolean
     - form.buttons do
       %button{:type => 'submit'} Sign in
 
-  = render :partial => "shared/devise_links" 
+  = render :partial => "shared/devise_links"
 

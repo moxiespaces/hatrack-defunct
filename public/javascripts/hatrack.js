@@ -88,7 +88,7 @@ var Hatrack = {
   },
 
   toggleColor: function(event) {
-    var color = event.target.className.split(' ')[1];
+    var color = $(event.target).attr('data-color');
     $('#' + color).toggle();
 
     $('.rack:visible').each(function(i, e) {
@@ -97,6 +97,8 @@ var Hatrack = {
     $('.rack:hidden').each(function(i, e) {
       $('.toggle.' + e.id).addClass('disabled');
     });
+
+    $('.rack:visible').width(100/$('.rack:visible').length+'%');
 
     return false;
   },

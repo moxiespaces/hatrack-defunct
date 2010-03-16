@@ -1,0 +1,11 @@
+//<input name="authenticity_token" type="hidden" value="cjCYbISm1B8wWSWJngtKD5D1pr9IaRWDsatnC68sKvc=" /></div>
+            
+          - semantic_form_for resource_name, resource, :url => session_path(resource_name) do |form|
+            - form.inputs do
+              = form.input :email, :required => false
+              = form.input :password, :required => false
+
+              - if devise_mapping.rememberable?
+                = form.input :remember_me, :as => :boolean, :required => false
+            - form.buttons do
+              %button{:type => 'submit'} Sign in

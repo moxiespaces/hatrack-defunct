@@ -1,0 +1,2 @@
+class WhiteHat < Hat
+end

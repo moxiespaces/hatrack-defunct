@@ -1,31 +1,104 @@
 @import mixins
 
+=login_field
+  :width 150px
+  :padding 2px
+  :margin 2px
+  :border 1px #eee solid
+
+=border_settings
+  :border 2px solid
+  :border-color = !header_color
+  :padding 15px 10px 
+
+=input_settings
+  :width 300px
+  :padding 2px
+  :font-size 16px
+
+
 #homepage
   +font_base
 
   #header
-    :height 40px
+    :height 80px
     :background-color = !header_color
     :padding 0 10px 0
     :position relative
 
-  #logo
-    +logo
+    #login
+      :float right
+
+      label
+        :color #fff
+        :font-weight bold
+        :display inline
+
+      input[type=text]
+        +login_field
+
+      input[type=password]
+        +login_field
+
+
+
+      .boolean
+        :margin 0
+        :padding 0
+        :vertical-align top
+
+        label
+          :margin 0
+          :padding 0
+
+      .buttons
+        :position absolute
+        :right 5px
+        :top 45px
+        
+        
+
+    #logo
+      :position absolute
+      :left 10px
+      :top 20px
+      :font-size 30px
+      :text-decoration none
+      +logo
+
+
 
   #content
-    :margin 0 auto
-    :width 400px
-    +grad_background
-    +border-radius-bottom(10px)
-    :border 2px  solid
-    :border-color = !header_color
-    :padding 15px 10px 
+
+    #sign_up
+      :margin 0 0 0 40px
+      :width 400px
+      +grad_background
+      +border-radius-bottom(10px)
+      +border_settings
+
+      h2
+        :font-size 20px
+        :font-weight bold
 
     .form
       :font-weight bold
       :font-size 14px
 
-      input[type=text]
-        width
+      li
+        :margin 5px 0
 
-      
+      input[type=text]
+        +input_settings
+      input[type=password]
+        +input_settings
+      button
+        :float right
+        :font-size 18px
+
+      .buttons
+        :margin 0
+        :padding 0
+
+button
+  +button

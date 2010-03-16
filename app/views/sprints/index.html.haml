@@ -11,9 +11,11 @@
 
 
     #column_controls
-      .toggle.black Black
-
-      .toggle.yellow Yellow
+      .toggle.red{'data-color' => 'red'} Red
+      .toggle.black{'data-color' => 'black'} Black
+      .toggle.yellow{'data-color' => 'yellow'} Yellow
+      .toggle.blue{'data-color' => 'blue'} Blue
+      .toggle.white{'data-color' => 'white'} White
 
 
     #current_sprint
@@ -53,23 +55,8 @@
 
   %table#racks
     %tr
-      %td#yellow.rack{:style => "width:50%;"}
-        .column_header
-          %img.toggle.yellow{:src => '/images/hide.png'}
-          %button.add_hat.yellow{:value => 'yellow'} Add Yellow Hat
-        %ul.list
-          - @current_sprint.yellow_hats.each do |hat|
-            = render :partial => '/hats/yellow', :locals => {:hat => hat}
-
-      %td#black.rack{:style => "width:50%;"}
-        .column_header
-          %img.toggle.black{:src => '/images/hide.png'}
-          %button.add_hat.black{:value => 'black'} Add Black Hat
-          
-        %ul.list
-          - @current_sprint.black_hats.each do |hat|
-            = render :partial => '/hats/black', :locals => {:hat => hat} 
-        
+      - for color in current_user.pref.colors
+        = render :partial => "/sprints/rack", :locals => {:color => color, :hats => @current_sprint.send("#{color}_hats".to_sym), :num_cols => Hat::COLORS.size  }
 
   #new_hat
     %button.add_hat.yellow{:value => 'yellow'} Add <span class="underline">Y</span>ellow Hat

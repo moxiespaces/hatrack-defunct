@@ -1,36 +1,113 @@
-/* line 3, ../../../app/stylesheets/homepage.sass */
+/* line 20, ../../../app/stylesheets/homepage.sass */
 #homepage {
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .08em; }
-  /* line 6, ../../../app/stylesheets/homepage.sass */
+  /* line 23, ../../../app/stylesheets/homepage.sass */
   #homepage #header {
-    height: 40px;
+    height: 80px;
     background-color: #0017b2;
     padding: 0 10px 0;
     position: relative; }
-  /* line 12, ../../../app/stylesheets/homepage.sass */
-  #homepage #logo {
-    font-size: 18px;
-    text-transform: uppercase;
-    font-family: Tahoma, Arial, Verdana, sans-serif;
-    letter-spacing: 2px;
-    color: #fff;
-    line-height: 30px;
-    position: absolute;
-    left: 46%;
-    top: 4px; }
-  /* line 15, ../../../app/stylesheets/homepage.sass */
-  #homepage #content {
-    margin: 0 auto;
+    /* line 29, ../../../app/stylesheets/homepage.sass */
+    #homepage #header #login {
+      float: right; }
+      /* line 32, ../../../app/stylesheets/homepage.sass */
+      #homepage #header #login label {
+        color: #fff;
+        font-weight: bold;
+        display: inline; }
+      /* line 37, ../../../app/stylesheets/homepage.sass */
+      #homepage #header #login input[type=text] {
+        width: 150px;
+        padding: 2px;
+        margin: 2px;
+        border: 1px #eee solid; }
+      /* line 40, ../../../app/stylesheets/homepage.sass */
+      #homepage #header #login input[type=password] {
+        width: 150px;
+        padding: 2px;
+        margin: 2px;
+        border: 1px #eee solid; }
+      /* line 45, ../../../app/stylesheets/homepage.sass */
+      #homepage #header #login .boolean {
+        margin: 0;
+        padding: 0;
+        vertical-align: top; }
+        /* line 50, ../../../app/stylesheets/homepage.sass */
+        #homepage #header #login .boolean label {
+          margin: 0;
+          padding: 0; }
+      /* line 54, ../../../app/stylesheets/homepage.sass */
+      #homepage #header #login .buttons {
+        position: absolute;
+        right: 5px;
+        top: 45px; }
+    /* line 61, ../../../app/stylesheets/homepage.sass */
+    #homepage #header #logo {
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      font-size: 30px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: Tahoma, Arial, Verdana, sans-serif;
+      letter-spacing: 2px;
+      color: #fff;
+      line-height: 30px; }
+  /* line 73, ../../../app/stylesheets/homepage.sass */
+  #homepage #content #sign_up {
+    margin: 0 0 0 40px;
     width: 400px;
     background: #E1E3F5 url(/images/form_bg.png) repeat-x 0 0;
     -moz-border-radius: 0 0 10px 10px;
     -webkit-border-radius: 0 0 10px 10px;
-    border: 2px  solid;
+    border: 2px solid;
     border-color: #0017b2;
     padding: 15px 10px; }
-    /* line 24, ../../../app/stylesheets/homepage.sass */
-    #homepage #content .form {
-      font-weight: bold;
-      font-size: 14px; }
+    /* line 80, ../../../app/stylesheets/homepage.sass */
+    #homepage #content #sign_up h2 {
+      font-size: 20px;
+      font-weight: bold; }
+  /* line 84, ../../../app/stylesheets/homepage.sass */
+  #homepage #content .form {
+    font-weight: bold;
+    font-size: 14px; }
+    /* line 88, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form li {
+      margin: 5px 0; }
+    /* line 91, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form input[type=text] {
+      width: 300px;
+      padding: 2px;
+      font-size: 16px; }
+    /* line 93, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form input[type=password] {
+      width: 300px;
+      padding: 2px;
+      font-size: 16px; }
+    /* line 95, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form button {
+      float: right;
+      font-size: 18px; }
+    /* line 99, ../../../app/stylesheets/homepage.sass */
+    #homepage #content .form .buttons {
+      margin: 0;
+      padding: 0; }
+
+/* line 103, ../../../app/stylesheets/homepage.sass */
+button {
+  margin: 0 7px;
+  background-color: #f5f5f5;
+  border: 1px solid #dedede;
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  font-family: "Lucida Grande", Tahoma, Arial, Verdana, sans-serif;
+  font-size: 100%;
+  line-height: 100%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #565656;
+  cursor: pointer; }

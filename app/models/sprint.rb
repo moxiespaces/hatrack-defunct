@@ -6,8 +6,11 @@ class Sprint
   key :end_date, Date
   timestamps!
 
+  many :blue_hats
+  many :white_hats
   many :yellow_hats
   many :black_hats
+  many :red_hats
 
   belongs_to :user
 

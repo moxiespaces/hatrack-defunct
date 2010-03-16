@@ -4,13 +4,11 @@ class SprintsController < ApplicationController
   layout 'hatrack'
 
   before_filter :get_sprints, :only => [:index, :show]
-  
-  def index
-    if @sprints.blank?
-      current_user.sprints << Sprint.new(:name => 'Current Sprint',:start_date => Date.today)
-      @sprints = current_user.sprints.all
-    end
+  before_filter :init_sprints, :only => [:index, :show]
+  before_filter :init_prefs, :only => [:index, :show]
 
+  def index
+    logger.info current_user.pref.colors.inspect
     @current_sprint = current_user.sprints.first(:conditions => {:end_date => nil}) || @sprints.first
     remove_current_sprint
   end
@@ -25,7 +23,7 @@ class SprintsController < ApplicationController
     session[:font_size] = params[:size]
     render :template => false, :layout => false
   end
-  
+
 
   def create
     current_user.sprints.all(:conditions => {:end_date => nil} ).each do |sprint|
@@ -58,6 +56,22 @@ class SprintsController < ApplicationController
   def remove_current_sprint
     @sprints = @sprints - [@current_sprint]
   end
-  
+
+  def init_prefs
+    if current_user.pref.blank?
+      current_user.pref = Pref.new()
+      current_user.pref.save
+    end
+
+  end
+
+  def init_sprints
+    if @sprints.blank?
+      current_user.sprints << Sprint.new(:name => 'Current Sprint', :start_date => Date.today)
+      @sprints = current_user.sprints.all
+    end
+
+  end
+
 
 end

@@ -7,4 +7,5 @@ class User
          :rememberable, :trackable, :validatable
 
   many :sprints
+  one :pref
 end
