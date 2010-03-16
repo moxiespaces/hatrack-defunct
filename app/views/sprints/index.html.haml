@@ -19,7 +19,9 @@
 
 
     #current_sprint
-      %span#current_name{:title => @current_sprint.name}= "#{truncate(@current_sprint.name,{:lenght => 30})} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+      %span#current_name{:title => @current_sprint.name}
+        = "#{truncate(@current_sprint.name,{:lenght => 30})} (#{print_date(@current_sprint.start_date)} - #{print_date(@current_sprint.end_date, 'Current')})"
+        = image_tag("/images/show_sprints.png")
 
       #edit_sprint_form.form
         - semantic_form_for @current_sprint do |form|

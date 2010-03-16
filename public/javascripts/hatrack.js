@@ -8,7 +8,7 @@ var Hatrack = {
 
   init: function() {
     $('#current_name').bind('click', Hatrack.showSprints);
-
+    
     $('.add_hat').bind('click', Hatrack.determineColor);
 
     $('.toggle').bind('click', Hatrack.determineToggleColor);
@@ -211,13 +211,16 @@ var Hatrack = {
     $('body').bind('click', Hatrack.resetWindows);
   },
 
-  hideSprints:function(){
+  hideSprints:function(event){
+    if ( event &&  event.target && $(event.target)[0] == $('#current_name img')[0] ) {
+      return;
+    }
     $('#sprints').hide();
     $('body').unbind('click', Hatrack.resetWindows);
   },
   resetWindows:function(event) {
     if (event.target.id != 'current_name') {
-      Hatrack.hideSprints();
+      Hatrack.hideSprints(event);
     }
   },
 
