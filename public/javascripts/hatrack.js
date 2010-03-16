@@ -3,13 +3,15 @@ var Hatrack = {
   controls: $('#controls'),
   font_size: null,
   sprint_id: null,
-  colors: ['yellow','black','green','red','white'] ,
+  colors: ['white','blue','yellow','black','green','red'] ,
+  keymap: {87:'white',76:'blue',89:'yellow',66:'black',82:'yellow'} ,
+
   init: function() {
     $('#current_name').bind('click', Hatrack.showSprints);
 
     $('.add_hat').bind('click', Hatrack.determineColor);
 
-    $('.toggle').bind('click', Hatrack.toggleColor);
+    $('.toggle').bind('click', Hatrack.determineToggleColor);
 
     $('.fontSize').bind('click', Hatrack.fontSize);
 
@@ -65,6 +67,10 @@ var Hatrack = {
 
     var id = Math.floor(Math.random() * 1111)
 
+    $('#'+color+':hidden').each(function(){
+      Hatrack.toggleColor(color);
+    })
+
     $('#' + color + ' ul').prepend('<li class="hat_item"><div class="hat new ' + color + '" id="hat_' + id + '"></div></li>');
     var new_hat = $('#hat_' + id);
     new_hat.editable('/hats/create?sprint_id=' + Hatrack.sprint_id + '&type=' + color, {
@@ -81,14 +87,21 @@ var Hatrack = {
   },
 
   onNewEdit:function(editable, hat) {
-    $(hat).html('');
+    Hatrack.resetNewHat();
+    Hatrack.screen_dirty = true;
+
   },
   onEdit:function(editable, hat) {
     Hatrack.screen_dirty = true
   },
 
-  toggleColor: function(event) {
+
+
+  determineToggleColor:function(event){
     var color = $(event.target).attr('data-color');
+    Hatrack.toggleColor(color);
+  },
+  toggleColor: function(color) {
     $('#' + color).toggle();
 
     $('.rack:visible').each(function(i, e) {
@@ -168,20 +181,9 @@ var Hatrack = {
       Hatrack.new_hat_enabled = true;
       return false;
     }
+
     if (Hatrack.new_hat_enabled) {
-      var color = null;
-      switch (event.keyCode) {
-        case 66: event.target.parentNode.className
-          color = "black";
-          break;
-        case 89:
-          color = "yellow";
-          break;
-        case 27:
-          Hatrack.resetNewHat();
-          return false
-          break;
-      }
+      var color = Hatrack.keymap[event.keyCode];
       if (color) {
         Hatrack.addHat(color);
         Hatrack.resetNewHat();

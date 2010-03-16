@@ -56,13 +56,12 @@
   %table#racks
     %tr
       - for color in current_user.pref.colors
-        = render :partial => "/sprints/rack", :locals => {:color => color, :hats => @current_sprint.send("#{color}_hats".to_sym), :num_cols => Hat::COLORS.size  }
+        = render :partial => "/sprints/rack", :locals => {:color => color, :hats => @current_sprint.send("#{color}_hats".to_sym), :num_cols => current_user.pref.colors.size  }
 
   #new_hat
-    %button.add_hat.yellow{:value => 'yellow'} Add <span class="underline">Y</span>ellow Hat
-    %button.add_hat.black{:value => 'black'} Add <span class="underline">B</span>lack Hat
-
-  %a#logout{ :href => '/users/sign_out' } Logout
+    - for color in current_user.pref.colors
+      != new_hat_button color
+    
 
 
 

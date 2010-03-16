@@ -6,29 +6,31 @@
 
   %body
 
-  = yield
+    = yield
 
 
-  = include_javascripts :common
+    = link_to 'Logout' , '/users/sign_out', :id => 'logout'
 
-  - if session[:font_size]
+    = include_javascripts :common
+
+    - if session[:font_size]
+      :javascript
+        Hatrack.font_size = #{session[:font_size]};
+
     :javascript
-      Hatrack.font_size = #{session[:font_size]};
 
-  :javascript
+      Hatrack.sprint_id = '#{@current_sprint.id}';
+      Hatrack.init();
 
-    Hatrack.sprint_id = '#{@current_sprint.id}';
-    Hatrack.init();
+    :javascript
 
-  :javascript
-
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    try {
-      var pageTracker = _gat._getTracker("UA-15173540-1");
-      pageTracker._trackPageview();
-    } catch(err) {}
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+        var pageTracker = _gat._getTracker("UA-15173540-1");
+        pageTracker._trackPageview();
+      } catch(err) {}
 
 
-  = render(:partial => "shared/uservoice")
+    = render(:partial => "shared/uservoice")
 
