@@ -33,3 +33,4 @@ config.gem 'faker'
 
 config.gem "rspec", :lib => false, :version => ">= 1.2.0"
 config.gem 'rspec-rails', :version => '>=1.3.2', :lib => false
+config.gem 'remarkable_rails', :lib => false

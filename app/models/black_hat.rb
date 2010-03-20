@@ -5,3 +5,16 @@ class BlackHat < ActiveRecord::Base
 end
 
 
+
+# == Schema Information
+#
+# Table name: black_hats
+#
+#  id         :integer         not null, primary key
+#  text       :string(255)
+#  sprint_id  :integer
+#  promotions :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

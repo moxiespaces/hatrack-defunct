@@ -17,3 +17,17 @@ class Sprint < ActiveRecord::Base
   belongs_to :user
 
 end
+
+# == Schema Information
+#
+# Table name: sprints
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  start_date :date
+#  end_date   :date
+#  created_at :datetime
+#  updated_at :datetime
+#  user_id    :integer
+#
+
