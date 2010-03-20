@@ -17,8 +17,8 @@ var Hatrack = {
 
     $('.date_input').datepicker({dateFormat: 'yy-mm-dd'});
 
-    $('#edit_sprint').bind('click', Hatrack.editSprint);
-    $('#new_sprint').bind('click', Hatrack.newSprint);
+    $('#edit_sprint_toggle').bind('click', Hatrack.editSprint);
+    $('#new_sprint_toggle').bind('click', Hatrack.newSprint);
     $('.cancel').bind('click', Hatrack.cancelEdit);
 
     $('.promote').bind('click', Hatrack.promote);

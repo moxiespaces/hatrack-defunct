@@ -27,8 +27,8 @@
         - semantic_form_for @current_sprint do |form|
           - form.inputs do
             = form.input :name
-            = form.input :start_date,:input_html => { :class => 'date_input' }
-            = form.input :end_date,:input_html => { :class => 'date_input' }
+            = form.input :start_date, :as => :string ,:input_html => { :class => 'date_input' }
+            = form.input :end_date, :as => :string ,:input_html => { :class => 'date_input' }
           - form.buttons do
             %button#sprint_submit.update{:type => 'submit'} Update Sprint
             %button.cancel Cancel
@@ -37,13 +37,13 @@
         - semantic_form_for Sprint.new do |form|
           - form.inputs do
             = form.input :name,:input_html => { :id => 'new_sprint[name]', :value => 'Enter a Sprint Name'}
-            = form.input :start_date,:input_html => { :id => 'new_sprint[start_date]', :class => 'date_input', :value => Date.today }
+            = form.input :start_date, :as => :string,:input_html => { :id => 'new_sprint[start_date]', :class => 'date_input', :value => Date.today }
           - form.buttons do
             %button#sprint_submit.create{:type => 'submit'} Create Sprint
             %button.cancel Cancel
 
-    #edit_sprint.form_toggle edit
-    #new_sprint.form_toggle new
+    #edit_sprint_toggle.form_toggle edit
+    #new_sprint_toggle.form_toggle new
 
     %ul#sprints
       - @sprints[0..9].each do |sprint|
@@ -58,7 +58,6 @@
   %table#racks
     %tr
       = render :partial => "/sprints/rack", :locals => {:color => "yellow", :hats => @current_sprint.send("yellow_hats".to_sym), :num_cols => 2 }
-    %tr
       = render :partial => "/sprints/rack", :locals => {:color => "black", :hats => @current_sprint.send("black_hats".to_sym), :num_cols => 2 }
 
   #new_hat

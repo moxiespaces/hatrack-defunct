@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(:version => 20100320195441) do
     t.string   "owner"
   end
 
+  create_table "hats", :force => true do |t|
+    t.text     "type"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "green_hat_id"
+    t.integer  "sprint_id"
+  end
+
   create_table "sprints", :force => true do |t|
     t.string   "name"
     t.date     "start_date"

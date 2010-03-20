@@ -10,8 +10,9 @@ class SprintsController < ApplicationController
   end
 
   def show
+    @sprints = current_user.sprints.all(:order => 'end_date desc, start_date desc')
     @current_sprint = current_user.sprints.find(params[:id])
-    remove_current_sprint
+    @sprints = @sprints - [@current_sprint]
     render :template => '/sprints/index'
   end
 
