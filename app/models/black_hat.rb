@@ -1,7 +1,7 @@
 class BlackHat < ActiveRecord::Base
 
-  #key :promotions, Integer
-  #key :green_hat, GreenHat 
+  has_one :green_hat
+  belongs_to :sprint
 end
 
 

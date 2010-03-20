@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   devise :registerable, :authenticatable, :confirmable, :recoverable,
          :rememberable, :trackable, :validatable
 
-  #many :sprints
-  #one :pref
+  has_many :sprints
 end
 
 # == Schema Information

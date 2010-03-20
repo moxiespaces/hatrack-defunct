@@ -1,6 +1,6 @@
 class GreenHat < ActiveRecord::Base
 
-  #key :owner, String
+  belongs_to :black_hat
 end
 
 # == Schema Information
