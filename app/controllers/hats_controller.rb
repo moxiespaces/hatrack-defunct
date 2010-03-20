@@ -4,86 +4,35 @@ class HatsController < ApplicationController
   def create
     sprint = current_user.sprints.find(params[:sprint_id])
 
-    lo = {:text => params[:value], :created_at => Time.now.utc}
-    
-    case params[:type]
-      when 'blue'
-        hat = BlueHat.new(lo)
-        sprint.blue_hats << hat
-      when 'white'
-        hat = WhiteHat.new(lo)
-        sprint.white_hats << hat
-      when 'yellow'
-        hat = YellowHat.new(lo)
-        sprint.yellow_hats << hat
-      when 'red'
-        hat = RedHat.new(lo)
-        sprint.red_hats << hat
-      when 'black'
-        hat = BlackHat.new(lo)
-        sprint.black_hats << hat
-    end
+    hat = (params[:type] + "_hat").camelize.constantize.new(:sprint => sprint, :text => params[:value])
+    hat.save!
 
-    if sprint.save
-      render :status => 200, :partial => '/hats/'+params[:type], :locals => {:hat => hat}
-    else
-      render :status => 400, :text => 'Error adding hat'
-    end
+    render :status => 200, :partial => '/hats/'+params[:type], :locals => {:hat => hat}
+  rescue ActiveRecord::RecordInvalid => ri
+    render :status => 400, :text => 'Error adding hat: #{ri.to_s}'
+  rescue NameError => ne
+    render :status => 400, :text => 'Error adding hat: #{ne.to_s}'
   end
 
   def update
     id = params[:id].split('_').last
+    field = params[:type] == "green" ? params[:id].split('_').first : 'text'
 
     sprint = current_user.sprints.find(params[:sprint_id])
 
-    hat = case params[:type]
-      when 'blue'
-        sprint.blue_hats.find(id)
-      when 'white'
-        sprint.white_hats.find(id)
-      when 'yellow'
-        sprint.yellow_hats.find(id)
-      when 'black'
-        sprint.black_hats.find(id)
-      when 'red'
-        sprint.red_hats.find(id)
-      when 'green'
-        black_hat = sprint.black_hats.find(id)
-        unless black_hat.green_hat
-          black_hat.green_hat = GreenHat.new()
-        end
-        black_hat.green_hat
-    end
+    type = params[:type] == "green" ? "black" : params[:type]
 
-    hat.text = params[:value]
+    hat = (type + "_hat").camelize.constantize.find(:first, :conditions => {:id => id, :sprint_id => sprint.id})
+    hat = hat.green_hat || hat.green_hat.new if params[:type] == 'green'
 
-    if sprint.save
-      render :status => 200, :text => params[:value]
-    else
-      render :status => 400, :text => 'Error updating hat'
-    end
-  end
+    hat.update_attributes!({field => params[:value]})
 
-  def update_green_hat
-    hat_data =  params[:id].split('_')
-    id = hat_data.last
-    field = hat_data[1]
+    render :status => 200, :text => params[:value]
 
-    sprint = Sprint.find(params[:sprint_id])
-
-    black_hat = sprint.black_hats.find(id)
-    unless black_hat.green_hat
-      black_hat.green_hat = GreenHat.new()
-    end
-
-    black_hat.green_hat[field] = params[:value]
-
-    if sprint.save
-      render :status => 200, :text => params[:value]
-    else
-      render :status => 400, :text => 'Error updating hat'
-    end
-
+  rescue ActiveRecord::RecordInvalid, NameError
+    render :status => 400, :text => 'Error updating hat'
+  rescue ActiveRecord::RecordNotFound
+    render :status => 404
   end
 
   def promote

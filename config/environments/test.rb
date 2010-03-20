@@ -31,4 +31,6 @@ config.action_mailer.default_url_options = {:host => 'test.local'}
 config.gem 'machinist'
 config.gem 'faker'
 
-config.gem 'machinist_mongo', :version => '1.0.2', :lib => false
+config.gem "rspec", :lib => false, :version => ">= 1.2.0"
+config.gem 'rspec-rails', :version => '>=1.3.2', :lib => false
+config.gem 'remarkable_rails', :lib => false

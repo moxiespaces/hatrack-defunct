@@ -1,2 +1,0 @@
-class RedHat < Hat
-end
