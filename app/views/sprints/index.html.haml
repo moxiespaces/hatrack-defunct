@@ -55,13 +55,11 @@
 
   %table#racks
     %tr
-      - for color in current_user.pref.colors
-        = render :partial => "/sprints/rack", :locals => {:color => color, :hats => @current_sprint.send("#{color}_hats".to_sym), :num_cols => current_user.pref.colors.size  }
+      = render :partial => "/sprints/rack", :locals => {:color => "yellow", :hats => @current_sprint.send("yellow_hats".to_sym), :num_cols => 2 }
+    %tr
+      = render :partial => "/sprints/rack", :locals => {:color => "black", :hats => @current_sprint.send("black_hats".to_sym), :num_cols => 2 }
 
   #new_hat
-    - for color in current_user.pref.colors
-      != new_hat_button color
-    
-
-
+    = new_hat_button "yellow"
+    = new_hat_button "black"
 

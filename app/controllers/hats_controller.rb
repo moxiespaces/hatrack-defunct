@@ -4,25 +4,12 @@ class HatsController < ApplicationController
   def create
     sprint = current_user.sprints.find(params[:sprint_id])
 
-    lo = {:text => params[:value], :created_at => Time.now.utc}
-    
-    case params[:type]
-      when 'blue'
-        hat = BlueHat.new(lo)
-        sprint.blue_hats << hat
-      when 'yellow'
-        hat = YellowHat.new(lo)
-        sprint.yellow_hats << hat
-      when 'black'
-        hat = BlackHat.new(lo)
-        sprint.black_hats << hat
-    end
+    hat = (params[:type] + "_hat").camelize.constantize.new(:sprint => sprint, :text => params[:value])
+    hat.save!
 
-    if sprint.save
-      render :status => 200, :partial => '/hats/'+params[:type], :locals => {:hat => hat}
-    else
-      render :status => 400, :text => 'Error adding hat'
-    end
+    render :status => 200, :partial => '/hats/'+params[:type], :locals => {:hat => hat}
+  rescue ActiveRecord::RecordInvalid => ri
+    render :status => 400, :text => 'Error adding hat: #{ri.to_s}'
   end
 
   def update

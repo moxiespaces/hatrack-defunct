@@ -43,11 +43,23 @@ module MachinistMacro
   end
 end
 
+module DeviseMacro
+  def login!(user = User.make)
+    user.confirm! rescue nil
+    sign_in user
+  end
+end
+
 Spec::Runner.configure do |config|
   config.before(:all)    { Sham.reset(:before_all)  }
   config.before(:each) do 
     Sham.reset(:before_each)
   end
   config.include(MachinistMacro)
+  config.include(DeviseMacro)
 end
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+      

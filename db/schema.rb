@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100320155351) do
+ActiveRecord::Schema.define(:version => 20100320195441) do
 
   create_table "black_hats", :force => true do |t|
     t.string   "text"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20100320155351) do
     t.integer  "black_hat_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "owner"
   end
 
   create_table "sprints", :force => true do |t|

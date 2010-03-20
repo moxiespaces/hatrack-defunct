@@ -26,4 +26,5 @@ User.blueprint do
   email
   password
   password_confirmation {password}
+  confirmed_at(:unique => false) {Time.now}
 end

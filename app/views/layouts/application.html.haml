@@ -19,15 +19,18 @@
             - form.buttons do
               %button{:type => 'submit'} Sign in
 
-
-
-          
-
         = link_to 'HATRACK' , '/' ,:id => 'logo' 
+
+      - if flash[:notice]
+        #notice
+          = flash[:notice]
+      
+      - if flash[:alert]
+        #alert
+          = flash[:alert]
 
       #content
         = yield
-
 
   :javascript
     $('#user_email').focus();
@@ -37,6 +40,3 @@
       var pageTracker = _gat._getTracker("UA-15173540-1");
       pageTracker._trackPageview();
     } catch(err) {}
-
-
-  
