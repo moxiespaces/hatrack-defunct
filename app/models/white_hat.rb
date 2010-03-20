@@ -1,2 +1,0 @@
-class WhiteHat < Hat
-end

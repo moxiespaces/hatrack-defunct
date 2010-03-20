@@ -1,2 +1,0 @@
-class BlueHat < Hat
-end

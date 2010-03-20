@@ -1,4 +1,4 @@
-class GreenHat < Hat
+class GreenHat < ActiveRecord::Base
 
-  key :owner, String
+  #key :owner, String
 end

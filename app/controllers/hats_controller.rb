@@ -10,15 +10,9 @@ class HatsController < ApplicationController
       when 'blue'
         hat = BlueHat.new(lo)
         sprint.blue_hats << hat
-      when 'white'
-        hat = WhiteHat.new(lo)
-        sprint.white_hats << hat
       when 'yellow'
         hat = YellowHat.new(lo)
         sprint.yellow_hats << hat
-      when 'red'
-        hat = RedHat.new(lo)
-        sprint.red_hats << hat
       when 'black'
         hat = BlackHat.new(lo)
         sprint.black_hats << hat
@@ -37,16 +31,10 @@ class HatsController < ApplicationController
     sprint = current_user.sprints.find(params[:sprint_id])
 
     hat = case params[:type]
-      when 'blue'
-        sprint.blue_hats.find(id)
-      when 'white'
-        sprint.white_hats.find(id)
       when 'yellow'
         sprint.yellow_hats.find(id)
       when 'black'
         sprint.black_hats.find(id)
-      when 'red'
-        sprint.red_hats.find(id)
       when 'green'
         black_hat = sprint.black_hats.find(id)
         unless black_hat.green_hat
