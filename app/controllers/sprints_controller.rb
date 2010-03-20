@@ -30,8 +30,9 @@ class SprintsController < ApplicationController
 
     name = params[:sprint][:name].blank? ? 'New Sprint' : params[:sprint][:name]
     date = params[:sprint][:start_date].blank? ? Date.today : Date.parse(params[:sprint][:start_date])
-    current_user.sprints << Sprint.new(:name => name, :start_date => date)
-    redirect_to(:action => :index)
+    sprint = Sprint.new(:name => name, :start_date => date)
+    current_user.sprints << sprint
+    redirect_to(:action => :show, :id => sprint.id)
   end
 
   def update
