@@ -16,14 +16,21 @@ class HatsController < ApplicationController
 
   def update
     id = params[:id].split('_').last
-    field = params[:type] == "green" ? params[:id].split('_').first : 'text'
+    field = params[:type] == "green" ? params[:id].split('_')[1] : 'text'
 
     sprint = current_user.sprints.find(params[:sprint_id])
 
     type = params[:type] == "green" ? "black" : params[:type]
 
     hat = (type + "_hat").camelize.constantize.find(:first, :conditions => {:id => id, :sprint_id => sprint.id})
-    hat = hat.green_hat || hat.green_hat.new if params[:type] == 'green'
+    if params[:type] == 'green'
+      if hat.green_hat
+        hat = hat.green_hat
+      else
+        hat.green_hat = GreenHat.new
+        hat = hat.green_hat
+      end
+    end
 
     hat.update_attributes!({field => params[:value]})
 
