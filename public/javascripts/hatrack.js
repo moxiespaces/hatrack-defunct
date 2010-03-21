@@ -45,9 +45,9 @@ var Hatrack = {
       type: 'textarea',submit: 'Save',cancel: 'Cancel', onblur: 'ignore',onedit:Hatrack.onEdit,
       placeholder: 'Add a green hat',onreset: Hatrack.setup }
 
-    $('.green_hat .text').editable('/hats/update?sprint_id=' + Hatrack.sprint_id, green_opts);
+    $('.green_hat .text').editable('/hats/update?type=green&sprint_id=' + Hatrack.sprint_id, green_opts);
     green_opts.placeholder = 'Add a green hat owner'
-    $('.green_hat .owner').editable('/hats/update?sprint_id=' + Hatrack.sprint_id, green_opts);
+    $('.green_hat .owner').editable('/hats/update?type=green&sprint_id=' + Hatrack.sprint_id, green_opts);
 
 
     Hatrack.screen_dirty = $('.hat textarea').length > 1;
