@@ -1,4 +1,5 @@
 compass -v '0.8.17'
+taps -v 0.2.23
 haml -v '2.2.16'
 jammit
 warden -v 0.9.4
