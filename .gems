@@ -1,8 +1,7 @@
 compass -v '0.8.17'
+taps -v 0.2.23
 haml -v '2.2.16'
 jammit
-mongo_mapper
-mongo_ext
 warden -v 0.9.4
 devise -v 1.0.1
 formtastic
