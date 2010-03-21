@@ -16,6 +16,12 @@
   :padding 2px
   :font-size 16px
 
+=drop_down(!width)
+  :width = !width
+  +grad_background
+  +border-radius-bottom(10px)
+  +border_settings
+
 
 #homepage
   +font_base
@@ -70,12 +76,14 @@
 
   #content
 
+    #login
+      +drop_down(300px)
+
+
     #sign_up
-      :margin 0 0 0 40px
-      :width 400px
-      +grad_background
-      +border-radius-bottom(10px)
-      +border_settings
+      :float left
+      :margin 0 10px 10px
+      +drop_down(300px)
 
       h2
         :font-size 20px

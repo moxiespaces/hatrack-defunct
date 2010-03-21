@@ -21,6 +21,9 @@
 
         = link_to 'HATRACK' , '/' ,:id => 'logo' 
 
+      #content
+        = yield
+
       - if flash[:notice]
         #notice
           = flash[:notice]
@@ -29,8 +32,6 @@
         #alert
           = flash[:alert]
 
-      #content
-        = yield
 
   :javascript
     $('#user_email').focus();
